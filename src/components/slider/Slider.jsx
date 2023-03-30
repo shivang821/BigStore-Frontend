@@ -1,6 +1,6 @@
 import React from 'react'
 import back2 from '../../images/products/back2.jpg'
-import back3 from '../../images/component 1.png'
+import back3 from '../../images/Component 1.png'
 import './slider.css'
 const Slider = () => {
     
