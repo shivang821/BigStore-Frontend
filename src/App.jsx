@@ -1,7 +1,7 @@
 import './App.css'
 // import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork';
 // import { useEffect } from 'react';
-import Header from './components/header/header';
+import Header from './components/header/Header';
 import { Routes, Route } from 'react-router-dom';
 import Product from './components/product/Product.jsx'
 import Home from './components/Home/Home';
