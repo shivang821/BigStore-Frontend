@@ -1,3 +1,9 @@
+:root {
+    --light: #F4A424;
+    --dark: #2B2B2B;
+    --primary: #eaeded
+}
+
 * {
     margin: 0;
     padding: 0;

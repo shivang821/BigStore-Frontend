@@ -1,0 +1,209 @@
+.header {
+    height: 7vh;
+    background-color: var(--dark);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2.4fr .6fr;
+    grid-template-rows: 1fr;
+    grid-auto-rows: min-content;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.brand {
+    color: #f5f5f5;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    padding-left: 5rem;
+}
+
+.brand>img {
+    /* padding-left: 2rem; */
+    height: 2.5rem;
+    width: 7rem;
+    aspect-ratio: 9/16;
+}
+
+.brandSpan {
+    color: var(--dark);
+    font-size: 2.5rem;
+}
+
+.header .centerDiv {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.rightDiv {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 5rem;
+}
+
+.rightDiv>svg {
+    height: 2rem;
+    width: 2rem;
+    color: var(--light);
+}
+
+.rightDiv .MuiAvatar-root {
+    margin-left: 2rem;
+    height: 2.3rem;
+    width: 2.3rem;
+}
+
+.linkHeaderMain {
+    height: 2rem;
+    width: 100%;
+    margin-top: 7vh;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+
+@keyframes headerAnimation {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+    to {
+        height: 2rem;
+        opacity: 1;
+    }
+}
+
+@keyframes linksAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.linksHeader {
+    width: 99%;
+    height: 2rem;
+    /* display: flex;
+    align-items: center;
+    justify-content: space-around; */
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 16.66%;
+    background-color: var(--light);
+    /* opacity: .8; */
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    animation: headerAnimation 1s ease-in 200ms;
+    transition: all .5s;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: .5rem;
+}
+
+.linksHeader::-webkit-scrollbar {
+    display: none;
+}
+
+.linksHeader>div {
+    scroll-snap-align: start;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 .5rem;
+}
+
+.linksHeader>div>a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #f5f5f5;
+    font-weight: bold;
+    animation: linksAnimation 1400ms ease-in 500ms;
+    transition: all .5s;
+}
+
+.linksHeader>div>a:hover {
+    color: var(--dark);
+}
+
+@media screen and (max-width:768px) {
+    .header {
+        height: 7vh;
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+    .brand {
+        padding-left: 1rem;
+    }
+    .brand>img {
+        height: 2rem;
+        width: 5rem;
+        aspect-ratio: 9/16;
+    }
+    .rightDiv {
+        padding-right: 1rem;
+    }
+    .rightDiv>svg {
+        height: 2rem;
+        width: 2rem;
+    }
+    .rightDiv .MuiAvatar-root {
+        margin-left: 1rem;
+        height: 2rem;
+        width: 2rem;
+    }
+    .linksHeader {
+        grid-auto-columns: 29%;
+        overflow-x: scroll;
+    }
+    .linksHeader>div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width:769px) and (max-width:1440px) {
+    .header {
+        height: 7vh;
+        grid-template-columns: 1fr 2.4fr .6fr;
+    }
+    .brand {
+        padding-left: 2rem;
+    }
+    .brand>img {
+        height: 2rem;
+        width: 5;
+        aspect-ratio: 9/16;
+    }
+    .rightDiv {
+        padding-right: 2rem;
+        padding-left: 1rem;
+    }
+    .rightDiv>svg {
+        height: 2.2rem;
+        width: 2.2rem;
+    }
+    .rightDiv .MuiAvatar-root {
+        margin-left: 1rem;
+        height: 2.3rem;
+        width: 2.3rem;
+    }
+}
