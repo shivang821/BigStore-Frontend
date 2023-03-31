@@ -1,7 +1,8 @@
 import React from 'react'
 import back2 from '../../images/products/back2.jpg'
-import back3 from '../../images/Component 1.png'
+import back3 from '../../images/grp2.svg'
 import './slider.css'
+import MouseIcon from '@mui/icons-material/Mouse';
 const Slider = () => {
     
     return (
@@ -9,6 +10,10 @@ const Slider = () => {
             <div className="sliderMain">
                 <img src={back2} alt="" />
                 <img src={back3} alt="" />
+            </div>
+            <div className="leftHome">
+                <h1><span>Find</span> Amazing Products Below</h1>
+                <a className="scrollBtn" href="#div" > <h2>scroll</h2>  <MouseIcon/> </a>
             </div>
         </>
     )
