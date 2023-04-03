@@ -28,22 +28,22 @@ const Header = () => {
       <div className="linkHeaderMain">
         <div className='linksHeader'>
           <div>
-            <NavLink to='/fashion' >Fashion</NavLink>
+            <NavLink to='/product/?category=fashion' >Fashion</NavLink>
           </div>
           <div>
-            <NavLink to='/mobiles' >Mobiles</NavLink>
+            <NavLink to='/product/?category=mobiles' >Mobiles</NavLink>
           </div>
           <div>
-            <NavLink to='/electronics' >Electronics</NavLink>
+            <NavLink to='/product?category=electronics' >Electronics</NavLink>
           </div>
           <div>
-            <NavLink to='/furniture' >Furniture</NavLink>
+            <NavLink to='/product?category=furniture' >Furniture</NavLink>
           </div>
           <div>
-            <NavLink to='/appliances' >Appliances</NavLink>
+            <NavLink to='/product?category=appliances' >Appliances</NavLink>
           </div>
           <div>
-            <NavLink to='/grocery' >Grocery</NavLink>
+            <NavLink to='/product?category=grocery' >Grocery</NavLink>
           </div>
         </div>
       </div>

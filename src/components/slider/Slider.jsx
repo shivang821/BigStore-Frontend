@@ -12,8 +12,8 @@ const Slider = () => {
                 <img src={back3} alt="" />
             </div>
             <div className="leftHome">
-                <h1><span>Find</span> Amazing Products Below</h1>
-                <a className="scrollBtn" href="#div" > <h2>scroll</h2>  <MouseIcon/> </a>
+                <h1><span>Find</span> Amazing Products <br /> Below</h1>
+                <a className="scrollBtn" href="#products" > <h2>scroll</h2>  <MouseIcon/> </a>
             </div>
         </>
     )

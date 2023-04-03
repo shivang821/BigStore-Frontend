@@ -9,6 +9,7 @@
     height: 100%;
     width: 100%;
     z-index: 30;
+    border-bottom: 5px solid var(--light);
 }
 
 .sliderMain>img:nth-child(2) {
@@ -33,9 +34,9 @@
     z-index: 5;
     position: absolute;
     height: auto;
-    width: auto;
-    top: 40%;
-    left: 5rem;
+    width: 40%;
+    top: 30%;
+    left: 7rem;
 }
 
 .leftHome>h1 {
@@ -62,15 +63,108 @@
     gap: .5rem;
     transition: background-color 2s;
     transition: color 2s;
+    transition: transform 1s;
     text-decoration: none;
+}
+
+.scrollBtn>* {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.scrollBtn:hover {
+    transform: scale(1.05);
+}
+
+@keyframes scaleBtn {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
 }
 
 .scrollBtn>h2 {
     margin-bottom: .1rem;
     font-weight: 500;
+    font-size: 1.5rem !important;
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:425px) {
+    .sliderMain>img:nth-child(1) {
+        height: 100vh;
+        width: 100%;
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .sliderMain {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .sliderMain>img:nth-child(2) {
+        height: 18rem;
+        aspect-ratio: 1/1;
+        position: static;
+        z-index: inherit;
+        margin-top: 24rem;
+        margin-left: 1rem;
+        animation: bigImage 1s ease-in 500ms;
+    }
+    @keyframes bigImage {
+        from {
+            transform: scale(.9);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+    .leftHome {
+        /* z-index: 22;  */
+        height: 10rem;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+    .leftHome>h1 {
+        font-kerning: auto;
+        color: var(--dark);
+        font-weight: bold;
+        font-size: 2rem;
+    }
+    .leftHome>h1>span {
+        color: var(--light);
+    }
+    .scrollBtn {
+        height: 2.7rem;
+        border-radius: 7px;
+        width: 10rem;
+        background-color: var(--light);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .5rem;
+        transition: background-color 2s;
+        transition: color 2s;
+        text-decoration: none;
+    }
+    .scrollBtn>h2 {
+        margin-bottom: .1rem;
+        font-weight: 500;
+    }
+}
+
+@media screen and (min-width:426px) and (max-width:767px) {
     .sliderMain>img:nth-child(1) {
         height: 100vh;
         width: 100%;
@@ -102,7 +196,7 @@
         }
     }
     .leftHome {
-        z-index: 22;
+        /* z-index: 22;  */
         height: 10rem;
         width: 100%;
         position: absolute;

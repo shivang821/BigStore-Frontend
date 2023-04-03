@@ -3,8 +3,9 @@ import './App.css'
 // import { useEffect } from 'react';
 import Header from './components/header/Header';
 import { Routes, Route } from 'react-router-dom';
-import Product from './components/product/Product.jsx'
 import Home from './components/Home/Home';
+import Footer from './components/footer/Footer';
+import Product from './components/product/Product';
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ function App() {
         <Route path='/product' element={<Product/>} />
 
       </Routes>
+      <Footer/>
     </div>
   )
 }

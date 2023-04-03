@@ -1,0 +1,169 @@
+.productMain {
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+}
+
+.productTop {
+    height: 30rem;
+    width: 100%;
+    padding: 0;
+    background-color: white;
+    display: flex;
+    position: relative;
+}
+
+.productTop1 {
+    width: 50%;
+    height: 85%;
+    background-color: var(--light);
+}
+
+.productTop2 {
+    width: 50%;
+    height: 85%;
+    background-color: #f5f5f5;
+}
+
+.rightImage {
+    width: 10rem;
+    aspect-ratio: auto;
+    position: absolute;
+    bottom: 0;
+    right: 15%;
+}
+
+.leftImage {
+    width: 10rem;
+    aspect-ratio: auto;
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+}
+
+.middleImage {
+    width: 10rem;
+    aspect-ratio: auto;
+    position: absolute;
+    top: 5rem;
+    left: calc(50% - 5rem);
+}
+
+.middleShadow {
+    width: 6rem;
+    aspect-ratio: auto;
+    position: absolute;
+    top: 85%;
+    left: calc(50% - 3rem);
+    filter: blur(4px);
+}
+
+@media screen and (min-width:768px) and (max-width:1439px) {
+    .productTop {
+        height: 25rem;
+    }
+    .productTop1 {
+        width: 50%;
+        height: 80%;
+    }
+    .productTop2 {
+        width: 50%;
+        height: 80%;
+    }
+    .rightImage {
+        width: 10rem;
+        aspect-ratio: auto;
+        position: absolute;
+        bottom: 0;
+        right: 15%;
+    }
+    .leftImage {
+        width: 10rem;
+        aspect-ratio: auto;
+        position: absolute;
+        bottom: 0;
+        left: 15%;
+    }
+    .middleImage {
+        width: 8rem;
+        aspect-ratio: auto;
+        position: absolute;
+        top: 5rem;
+        left: calc(50% - 4rem);
+    }
+    .middleShadow {
+        width: 6rem;
+        top: 80%;
+    }
+}
+
+@media screen and (max-width:465px) {
+    .productTop {
+        height: 20rem;
+    }
+    .productTop1 {
+        width: 50%;
+        height: 83%;
+    }
+    .productTop2 {
+        width: 50%;
+        height: 83%;
+    }
+    .rightImage {
+        width: 6rem;
+        right: 10%;
+    }
+    .leftImage {
+        width: 6rem;
+        left: 10%;
+    }
+    .middleImage {
+        width: 6.4rem;
+        aspect-ratio: auto;
+        position: absolute;
+        top: 5.7rem;
+        left: calc(50% - 3.2rem);
+    }
+    .middleShadow {
+        width: 4rem;
+        top: 83%;
+        left: calc(50% - 2rem);
+    }
+}
+
+@media screen and (min-width:466px) and (max-width:767px) {
+    .productTop {
+        height: 20rem;
+    }
+    .productTop1 {
+        width: 50%;
+        height: 83%;
+    }
+    .productTop2 {
+        width: 50%;
+        height: 83%;
+    }
+    .rightImage {
+        width: 7rem;
+        right: 12%;
+    }
+    .leftImage {
+        width: 7rem;
+        left: 12%;
+    }
+    .middleImage {
+        width: 6rem;
+        aspect-ratio: auto;
+        position: absolute;
+        top: 5rem;
+        left: calc(50% - 3rem);
+    }
+    .middleShadow {
+        width: 4rem;
+        top: 83%;
+        left: calc(50% - 2rem);
+    }
+}
