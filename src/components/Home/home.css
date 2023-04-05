@@ -1,3 +1,8 @@
+.home {
+    height: 100%;
+    width: 100%;
+}
+
 .topDeals {
     margin: 5px 0;
     height: 15rem;
@@ -105,7 +110,8 @@
     align-items: center;
     justify-content: center;
     padding: 2rem 0;
-    background-color: var(--primary);
+    /* background-color: var(--primary); */
+    background-color: white;
 }
 
 #products>div:nth-child(1) {

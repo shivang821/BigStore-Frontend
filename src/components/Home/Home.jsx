@@ -26,7 +26,7 @@ const Home = () => {
         },
     ]
     return (
-        <>
+        <div className='home'>
             <Slider />
             <div className="topDeals">
                 <div>
@@ -62,7 +62,7 @@ const Home = () => {
                     <ProductCard/>
                 </div>
             </section>
-        </>
+        </div>
     )
 }
 
