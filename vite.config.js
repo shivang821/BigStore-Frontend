@@ -6,5 +6,13 @@ export default defineConfig({
     plugins: [react()],
     server: {
         host: true
-    }
+    },
+    "github": {
+        "silent": true
+    },
+    "rewrites": [{
+        "source": "(.*)",
+        "destination": "/index.html"
+    }]
+
 })

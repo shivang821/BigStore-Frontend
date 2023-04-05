@@ -4,12 +4,14 @@ import rightImage from './images/rightImage.svg'
 import leftImage from './images/leftImage.svg'
 import middleImage from './images/middleImage.svg'
 import middleShadow from './images/middleShadow.svg'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams,useLocation } from 'react-router-dom'
 import ProductCard from './ProductCard'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import ProductTop from './ProductTop'
 const Product = () => {
+  const location=useLocation()
+  console.log(location.pathname);
   const [searchParams] = useSearchParams()
   const [pageName, setPageName] = useState()
   const ref1 = useRef();
