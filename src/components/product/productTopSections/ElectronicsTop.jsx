@@ -1,5 +1,5 @@
 import React from 'react'
-import electronicsTopImage from '../images/electronicsPageImage2.svg'
+import electronicsTopImage from '../images/electronicsPageimage2.svg'
 import'./electronicsTop.css'
 const ElectronicsTop = () => {
   return (
