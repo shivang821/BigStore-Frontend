@@ -19,7 +19,7 @@
     position: absolute;
     bottom: -1rem;
     right: 4rem;
-    animation: increaseImage 1s ease-in 500ms;
+    animation: increaseImage 1s linear;
 }
 
 @keyframes increaseImage {

@@ -1,0 +1,37 @@
+.appliancePageImage {
+    width: 23rem;
+    aspect-ratio: auto;
+    position: absolute;
+    bottom: 1.5rem;
+    left: calc((100% - 23rem) / 2);
+}
+
+@media screen and (max-width:465px) {
+    .appliancePageImage {
+        width: 13rem;
+        aspect-ratio: auto;
+        position: absolute;
+        bottom: 1.5rem;
+        left: calc((100% - 13rem) / 2);
+    }
+}
+
+@media screen and (min-width:466px) and (max-width:767px) {
+    .appliancePageImage {
+        width: 15rem;
+        aspect-ratio: auto;
+        position: absolute;
+        bottom: 1rem;
+        left: calc((100% - 15rem) / 2);
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1439px) {
+    .appliancePageImage {
+        width: 19rem;
+        aspect-ratio: auto;
+        position: absolute;
+        bottom: 2rem;
+        left: calc((100% - 19rem) / 2);
+    }
+}

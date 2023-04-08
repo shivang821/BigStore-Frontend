@@ -1,0 +1,37 @@
+.electronicsTopImage {
+    width: 22rem;
+    aspect-ratio: auto;
+    position: absolute;
+    bottom: 1.5rem;
+    left: calc((100% - 22rem) / 2);
+}
+
+@media screen and (max-width:465px) {
+    .electronicsTopImage {
+        width: 15rem;
+        aspect-ratio: auto;
+        position: absolute;
+        bottom: 1.5rem;
+        left: calc((100% - 15rem) / 2);
+    }
+}
+
+@media screen and (min-width:466px) and (max-width:767px) {
+    .electronicsTopImage {
+        width: 17rem;
+        aspect-ratio: auto;
+        position: absolute;
+        bottom: 1.3rem;
+        left: calc((100% - 17rem) / 2);
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1439px) {
+    .electronicsTopImage {
+        width: 21rem;
+        aspect-ratio: auto;
+        position: absolute;
+        bottom: 2.1rem;
+        left: calc((100% - 21rem) / 2);
+    }
+}

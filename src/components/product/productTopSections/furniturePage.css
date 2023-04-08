@@ -1,0 +1,37 @@
+.furnitureTopImage {
+    width: 20rem;
+    aspect-ratio: auto;
+    position: absolute;
+    bottom: 1.5rem;
+    left: calc((100% - 20rem) / 2);
+}
+
+@media screen and (max-width:465px) {
+    .furnitureTopImage {
+        width: 11rem;
+        aspect-ratio: auto;
+        position: absolute;
+        bottom: 1.5rem;
+        left: calc((100% - 11rem) / 2);
+    }
+}
+
+@media screen and (min-width:466px) and (max-width:767px) {
+    .furnitureTopImage {
+        width: 13rem;
+        aspect-ratio: auto;
+        position: absolute;
+        bottom: 1rem;
+        left: calc((100% - 13rem) / 2);
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1439px) {
+    .furnitureTopImage {
+        width: 16rem;
+        aspect-ratio: auto;
+        position: absolute;
+        bottom: 2rem;
+        left: calc((100% - 16rem) / 2);
+    }
+}

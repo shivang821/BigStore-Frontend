@@ -113,7 +113,7 @@
     /* opacity: .8; */
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    animation: headerAnimation 1s ease-in 200ms;
+    animation: headerAnimation 1s ease-in;
     transition: all .5s;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;

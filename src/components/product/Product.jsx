@@ -11,7 +11,6 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import ProductTop from './ProductTop'
 const Product = () => {
   const location=useLocation()
-  console.log(location.pathname);
   const [searchParams] = useSearchParams()
   const [pageName, setPageName] = useState()
   const ref1 = useRef();
@@ -44,7 +43,7 @@ const Product = () => {
       document.removeEventListener('click',handleClickOutside,true)
       document.removeEventListener('scroll',handleClickOutside,true)
     }
-  },[])
+  },[searchParams,window.innerWidth])
   // handling middleDiv
   if (flag && ref2?.current && !isInViewport1 && ref3?.current) {
     ref2.current.classList.add("fixedMiddleProductDiv");
