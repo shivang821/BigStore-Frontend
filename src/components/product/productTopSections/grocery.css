@@ -1,37 +1,37 @@
-.furnitureTopImage {
-    width: 20rem;
+.groceryImage {
+    width: 27rem;
     aspect-ratio: auto;
     position: absolute;
     bottom: 1.5rem;
-    left: calc((100% - 20rem) / 2);
+    left: calc((100% - 27rem) / 2);
 }
 
 @media screen and (max-width:465px) {
-    .furnitureTopImage {
-        width: 11rem;
+    .groceryImage {
+        width: 18rem;
         aspect-ratio: auto;
         position: absolute;
         bottom: 1.5rem;
-        left: calc((100% - 11rem) / 2);
+        left: calc((100% - 18rem) / 2);
     }
 }
 
 @media screen and (min-width:466px) and (max-width:767px) {
-    .furnitureTopImage {
-        width: 12rem;
+    .groceryImage {
+        width: 21rem;
         aspect-ratio: auto;
         position: absolute;
-        bottom: 1rem;
-        left: calc((100% - 12rem) / 2);
+        bottom: 1.3rem;
+        left: calc((100% - 21rem) / 2);
     }
 }
 
 @media screen and (min-width:768px) and (max-width:1439px) {
-    .furnitureTopImage {
-        width: 15rem;
+    .groceryImage {
+        width: 25rem;
         aspect-ratio: auto;
         position: absolute;
-        bottom: 1.5rem;
-        left: calc((100% - 15rem) / 2);
+        bottom: 2.1rem;
+        left: calc((100% - 25rem) / 2);
     }
 }

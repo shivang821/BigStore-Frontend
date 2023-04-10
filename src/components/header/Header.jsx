@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './header.css'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import SearchBar from './searchBar/SearchBar'
@@ -6,11 +6,7 @@ import logo from '../../images/logo4.png'
 import Avatar from '@mui/material/Avatar';
 import { NavLink } from 'react-router-dom';
 const Header = () => {
-  useEffect(() => {
-    document.body.addEventListener('scroll', () => {
-      console.log("hello");
-    })
-  });
+
   return (
     <>
       <div className='header'>

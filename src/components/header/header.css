@@ -1,5 +1,5 @@
 .header {
-    height: 7vh;
+    height: 3.5rem;
     background-color: var(--dark);
     width: 100%;
     display: grid;
@@ -72,7 +72,7 @@
 .linkHeaderMain {
     height: 2rem;
     width: 100%;
-    margin-top: 7vh;
+    margin-top: 3.5rem;
     left: 0;
     display: flex;
     justify-content: center;
@@ -103,14 +103,10 @@
     z-index: 12;
     width: 99%;
     height: 2rem;
-    /* display: flex;
-    align-items: center;
-    justify-content: space-around; */
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 16.66%;
     background-color: var(--light);
-    /* opacity: .8; */
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     animation: headerAnimation 1s ease-in;
@@ -142,9 +138,9 @@
     transition: all .5s;
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
     .header {
-        height: 7vh;
+        height: 3.5rem;
         grid-template-columns: 1fr 2fr 1fr;
     }
     .brand {
@@ -178,9 +174,9 @@
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1440px) {
+@media screen and (min-width:768px) and (max-width:1440px) {
     .header {
-        height: 7vh;
+        height: 3.5rem;
         grid-template-columns: 1fr 2.4fr .6fr;
     }
     .brand {

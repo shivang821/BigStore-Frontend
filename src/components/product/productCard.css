@@ -82,7 +82,7 @@
     transition: all 1s linear;
 }
 
-.react-stars {
+.productOverlay .react-stars {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,7 +128,7 @@
         opacity: .8;
         flex-direction: column;
     }
-    .react-stars {
+    .productOverlay .react-stars {
         display: flex;
         flex-direction: column;
         align-items: center;

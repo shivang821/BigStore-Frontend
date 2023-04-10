@@ -86,8 +86,6 @@
     border-radius: 50%;
     z-index: 100;
     background: rgba(0, 0, 0, 0.3);
-    /* -webkit-backdrop-filter: blur(1.5px);
-    backdrop-filter: blur(1.5px); */
     transition: all .5s;
 }
 

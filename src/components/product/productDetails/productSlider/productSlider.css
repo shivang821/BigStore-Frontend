@@ -1,0 +1,177 @@
+.productSlider {
+    height: 28rem;
+    width: 25rem;
+    overflow: hidden;
+    margin-top: 3rem;
+}
+
+.imageContainer {
+    height: 25rem;
+    width: auto;
+    display: flex;
+}
+
+.imageContainer>img {
+    height: 25rem;
+    width: 25rem;
+    /* transform: translateX(-200%); */
+    transition: all 1s;
+    object-fit: contain;
+    aspect-ratio: 1/1;
+}
+
+.left {
+    position: absolute;
+    height: 3rem;
+    width: 3rem;
+    top: calc((100% - 3rem) / 2);
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    margin-left: 5rem;
+    transform: translateX(0);
+    transition: all .5s ease-in;
+    border-radius: 50%;
+}
+
+.left>svg,
+.right>svg {
+    font-size: 3rem;
+    color: rgb(179, 179, 179);
+    transition: all .3s linear;
+}
+
+@media screen and (min-width:1440px) {
+    .left>svg:hover,
+    .right>svg:hover {
+        color: var(--light);
+        scale: 1.3;
+    }
+    .right:active {
+        transform: translateX(8px);
+    }
+    .left:active {
+        transform: translateX(-8px);
+    }
+}
+
+.right {
+    position: absolute;
+    height: 3rem;
+    width: 3rem;
+    top: calc((100% - 3rem) /2);
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5rem;
+    background-color: transparent;
+    border: none;
+    transform: translateX(0);
+    transition: all .5s ease-in;
+    border-radius: 50%;
+}
+
+.imgIndex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 25rem;
+    gap: 4px;
+}
+
+.balls {
+    height: .5rem;
+    width: .5rem;
+    background-color: #dadada;
+    border-radius: 50%;
+}
+
+@media screen and (min-width:768px) and (max-width:1439px) {
+    .productSlider {
+        height: 22rem;
+        width: 17rem;
+    }
+    .imageContainer {
+        height: 20rem;
+        width: auto;
+        display: flex;
+    }
+    .imageContainer>img {
+        height: 20rem;
+        width: 17rem;
+    }
+    .left {
+        height: 2rem;
+        width: 2rem;
+        left: -4rem;
+        border: none;
+        background-color: var(--light);
+        top: calc((100% - 2rem) / 2);
+    }
+    .left>svg,
+    .right>svg {
+        font-size: 2rem;
+        color: white;
+    }
+    .right {
+        height: 2rem;
+        width: 2rem;
+        right: -4rem;
+        background-color: var(--light);
+        top: calc((100% - 2rem) / 2);
+    }
+    .imgIndex {
+        height: 2rem;
+        width: 17rem;
+        gap: 4px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .productSlider {
+        height: 20rem;
+        width: 17rem;
+        align-self: flex-end;
+    }
+    .imageContainer {
+        height: 18rem;
+        width: auto;
+        display: flex;
+    }
+    .imageContainer>img {
+        height: 18rem;
+        width: 17rem;
+        object-fit: contain;
+        aspect-ratio: 1/1;
+    }
+    .left {
+        height: 2rem;
+        width: 2rem;
+        left: -3rem;
+        border: none;
+        background-color: var(--light);
+        top: calc((100% + 4rem - 2rem) /2);
+    }
+    .left>svg,
+    .right>svg {
+        font-size: 2rem;
+        color: white;
+    }
+    .right {
+        height: 2rem;
+        width: 2rem;
+        right: -3rem;
+        background-color: var(--light);
+        top: calc((100% + 4rem - 2rem) /2);
+    }
+    .imgIndex {
+        height: 2rem;
+        width: 17rem;
+        gap: 4px;
+    }
+}

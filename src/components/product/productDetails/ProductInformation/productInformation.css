@@ -1,0 +1,188 @@
+.productInformation {
+    height: 90%;
+    width: 80%;
+    /* padding: 2rem 0; */
+    /* background-color: black; */
+}
+
+.nameDiv {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+    /* border-bottom: 2px solid gray; */
+}
+
+.name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--light);
+}
+
+.desc {
+    font-size: 1.2rem;
+    font-weight: 550;
+    color: rgb(179, 177, 177);
+}
+
+.middleDetails {
+    height: 25%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+    /* background-color: antiquewhite; */
+    /* gap: 1rem; */
+}
+
+.middleDetails>p {
+    font-size: 1.5rem;
+}
+
+.rating {
+    font-size: 1.2rem;
+    color: var(--light);
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    width: 100%;
+    font-weight: bold;
+}
+
+.price {
+    color: var(--light);
+    font-size: 1.5rem;
+}
+
+.qtyDiv1 {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.qtyDiv1>p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    /* color: var(--light); */
+    color: gray;
+}
+
+.qtyInp {
+    display: flex;
+    width: 5rem;
+    height: 2.5rem;
+}
+
+.qtyInp>input {
+    height: 2.5rem;
+    width: 60%;
+    border: none;
+    outline: none;
+    text-align: center;
+    caret-color: transparent;
+    user-select: none !important;
+    font-size: 1.2rem;
+    font-weight: 550;
+    color: var(--light);
+    background-color: #f5f5f5;
+}
+
+.qtyBtn {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.qtyBtn>div {
+    height: calc((100% - 2px) / 2);
+    width: 100%;
+    /* font-size: .7rem; */
+    color: white;
+    background-color: var(--light);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s;
+}
+
+.qtyBtn>:nth-child(1) {
+    border-bottom: 2px solid #f5f5f5;
+    box-sizing: content-box;
+}
+
+.qtyBtn>div:hover {
+    background-color: #ff9d00;
+}
+
+.charges {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.charges>p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--light);
+}
+
+.buyAndCartBtn {
+    height: 25%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: .6rem;
+}
+
+.buyAndCartBtn>a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    width: 24.3rem;
+    border-radius: 10px;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buyAndCartBtn>a>button {
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 550;
+    cursor: pointer;
+    transition: scale .2s;
+    transition: background-color .7s ease;
+}
+
+.buyAndCartBtn>:nth-child(1)>button {
+    background-color: var(--light);
+    color: white;
+    box-sizing: content-box;
+}
+
+.buyAndCartBtn>:nth-child(2)>button {
+    background-color: #f5f5f5;
+    color: var(--light);
+}
+
+.buyAndCartBtn>a>button:active {
+    height: 99%;
+    width: 99%;
+    font-size: 1.3rem;
+}

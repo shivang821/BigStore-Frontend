@@ -43,7 +43,7 @@ const Product = () => {
       document.removeEventListener('click',handleClickOutside,true)
       document.removeEventListener('scroll',handleClickOutside,true)
     }
-  },[searchParams,window.innerWidth])
+  },[window.innerWidth,pageName])
   // handling middleDiv
   if (flag && ref2?.current && !isInViewport1 && ref3?.current) {
     ref2.current.classList.add("fixedMiddleProductDiv");
@@ -71,12 +71,6 @@ const Product = () => {
   return (
     <div className='productMain'>
       <div className="productTop" ref={ref1}>
-        {/* <div className="productTop1"></div>
-        <div className="productTop2"></div>
-        <img className='rightImage' src={rightImage} alt="" />
-        <img className='leftImage' src={leftImage} alt="" />
-        <img className='middleImage' src={middleImage} alt="" />
-        <img className='middleShadow' src={middleShadow} alt="" /> */}
         <ProductTop/>
       </div>
       <div className="middleProductDiv" ref={ref2}>
