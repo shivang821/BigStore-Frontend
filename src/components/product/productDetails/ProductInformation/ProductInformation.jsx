@@ -22,7 +22,7 @@ const ProductInformation = () => {
         value: 4.5,
         backgroundColor: "whitesmoke",
         isHalf: true,
-        size: 35
+        size: window.innerWidth>1439?35:window.innerWidth>767?25:20
     }
     return (
         <div className='productInformation'>
@@ -31,16 +31,15 @@ const ProductInformation = () => {
                 <p className='desc'>{details.desc}</p>
             </div>
             <div className='middleDetails'>
-                <p className='rating'> Rating : <ReactStars {...options} /></p>
-                <h3 className='price'>Price : ₹{details.price}</h3>
+                <h3 className='price'>Price :₹{details.price}</h3>
+                <span className='rating'> <p>Rating : </p> <ReactStars {...options} /></span>
             </div>
             <div className="qtyDiv1">
                 <p>Quantity : </p>
                 <div className="qtyInp">
-                    <input type="text" value={qty} />
+                    <input type="text" value={qty} readOnly/>
                     <div className="qtyBtn">
                         <div onClick={() => { qty < details.qty && setQty(qty + 1) }}><KeyboardArrowUpIcon /></div>
-                        {/* <hr /> */}
                         <div onClick={() => { qty > 1 && setQty(qty - 1) }}><KeyboardArrowDownIcon /></div>
                     </div>
                 </div>
@@ -49,7 +48,7 @@ const ProductInformation = () => {
                 <p>{details.price>=449?'Free Delivery':"Delivery Charge : 99"}</p>
             </div>
             <div className="buyAndCartBtn">
-                <NavLink><button>Buy Now</button></NavLink>
+                <NavLink ><button>Buy Now</button></NavLink>
                 <NavLink><button>Add To Cart</button></NavLink>
             </div>
         </div>

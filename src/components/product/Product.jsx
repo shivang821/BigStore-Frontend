@@ -1,16 +1,16 @@
 import React,{useMemo,useEffect,useState,useRef} from 'react'
 import './productPage.css'
-import rightImage from './images/rightImage.svg'
-import leftImage from './images/leftImage.svg'
-import middleImage from './images/middleImage.svg'
-import middleShadow from './images/middleShadow.svg'
 import { useSearchParams,useLocation } from 'react-router-dom'
 import ProductCard from './ProductCard'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import ProductTop from './ProductTop'
+import { useDispatch } from 'react-redux';
+import { getProducts } from '../../actions/productAction';
+import { PRODUCT_RESET } from '../../redusers/productReducer';
 const Product = () => {
   const location=useLocation()
+  const dispatch=useDispatch()
   const [searchParams] = useSearchParams()
   const [pageName, setPageName] = useState()
   const ref1 = useRef();
@@ -44,6 +44,14 @@ const Product = () => {
       document.removeEventListener('scroll',handleClickOutside,true)
     }
   },[window.innerWidth,pageName])
+  if(searchParams.get('category')){
+    dispatch(getProducts({category:searchParams.get('category')}))
+  }
+  // useEffect(()=>{
+  //   // if(error){
+  //   //   dispatch(PRODUCT_RESET())
+  //   // }
+  // },[dispatch,pageName])
   // handling middleDiv
   if (flag && ref2?.current && !isInViewport1 && ref3?.current) {
     ref2.current.classList.add("fixedMiddleProductDiv");
