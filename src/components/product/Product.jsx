@@ -1,26 +1,28 @@
-import React,{useMemo,useEffect,useState,useRef} from 'react'
+import React, { useMemo, useEffect, useState, useRef } from 'react'
 import './productPage.css'
-import { useSearchParams,useLocation } from 'react-router-dom'
+import { useSearchParams, useLocation } from 'react-router-dom'
 import ProductCard from './ProductCard'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import ProductTop from './ProductTop'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../actions/productAction';
 import { PRODUCT_RESET } from '../../redusers/productReducer';
 const Product = () => {
-  const location=useLocation()
-  const dispatch=useDispatch()
+  const location = useLocation()
+  const dispatch = useDispatch()
+  const {product,loading,error,success}=useSelector(state=>state.Product)
   const [searchParams] = useSearchParams()
   const [pageName, setPageName] = useState()
   const ref1 = useRef();
   const ref2 = useRef();
   const ref3 = useRef()
   const ref4 = useRef()
-  const ref5=useRef()
+  const ref5 = useRef()
   const [open, setOpen] = useState(false);
   const isInViewport1 = useIsInViewport(ref1);
   const [flag, setFlag] = useState(false);
+
   if (window.innerWidth < 1400) {
     if (open && ref4?.current) {
       ref4.current.style.transform = 'translateX(0)'
@@ -37,21 +39,17 @@ const Product = () => {
   }, 1000);
   useEffect(() => {
     setPageName(searchParams.get('category'))
-    document.addEventListener('click',handleClickOutside,true)
-    document.addEventListener('scroll',handleClickOutside,true)
-    return()=>{
-      document.removeEventListener('click',handleClickOutside,true)
-      document.removeEventListener('scroll',handleClickOutside,true)
+    dispatch(getProducts({ category: searchParams.get('category') }))
+    if(error){
+      dispatch(PRODUCT_RESET())
     }
-  },[window.innerWidth,pageName])
-  if(searchParams.get('category')){
-    dispatch(getProducts({category:searchParams.get('category')}))
-  }
-  // useEffect(()=>{
-  //   // if(error){
-  //   //   dispatch(PRODUCT_RESET())
-  //   // }
-  // },[dispatch,pageName])
+    document.addEventListener('click', handleClickOutside, true)
+    document.addEventListener('scroll', handleClickOutside, true)
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true)
+      document.removeEventListener('scroll', handleClickOutside, true)
+    }
+  },[searchParams.get('category')])
   // handling middleDiv
   if (flag && ref2?.current && !isInViewport1 && ref3?.current) {
     ref2.current.classList.add("fixedMiddleProductDiv");
@@ -60,7 +58,7 @@ const Product = () => {
     ref2.current.style.color = 'white'
     ref2.current.style.backgroundColor = 'var(--light)'
     // ref2.current.style.fontSize='14px'
-    ref2.current.style.fontSize=window.innerWidth<1400?'14px':'1.1rem'
+    ref2.current.style.fontSize = window.innerWidth < 1400 ? '14px' : '1.1rem'
 
   }
   else if (flag && ref2?.current && isInViewport1 && ref3?.current) {
@@ -71,24 +69,24 @@ const Product = () => {
     ref2.current.classList.remove("fixedMiddleProductDiv");
   }
   // handling click outside the filterBar
-  function handleClickOutside(e){
-    if(ref4.current&&!ref4.current.contains(e.target)){
+  function handleClickOutside(e) {
+    if (ref4.current && !ref4.current.contains(e.target)) {
       setOpen(false);
     }
   }
   return (
     <div className='productMain'>
       <div className="productTop" ref={ref1}>
-        <ProductTop/>
+        <ProductTop />
       </div>
       <div className="middleProductDiv" ref={ref2}>
         <h2>{pageName} DEALS</h2>
       </div>
       <div className="productBottom" ref={ref3}>
         <div className="productBottom1" ref={ref4}>
-          {(window.innerWidth<1400)&&<div  onClick={() => { setOpen(!open) }} className='arrowIcon'>
-            {open ? <KeyboardArrowRightIcon ref={ref5}/> : <KeyboardArrowLeftIcon ref={ref5}/>}</div>}
-          
+          {(window.innerWidth < 1400) && <div onClick={() => { setOpen(!open) }} className='arrowIcon'>
+            {open ? <KeyboardArrowRightIcon ref={ref5} /> : <KeyboardArrowLeftIcon ref={ref5} />}</div>}
+
         </div>
         <div className="productBottom2" >
           <ProductCard />
@@ -125,7 +123,7 @@ function useIsInViewport(ref) {
 
   const observer = useMemo(() =>
     new IntersectionObserver(([entry]) =>
-      setIsIntersecting(entry.isIntersecting), { threshold: window.innerWidth<=465?0.2: 0.11 }
+      setIsIntersecting(entry.isIntersecting), { threshold: window.innerWidth <= 465 ? 0.2 : 0.11 }
     ),
     [],
   );

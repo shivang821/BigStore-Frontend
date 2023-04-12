@@ -2,8 +2,6 @@ import { PRODUCT_FAIL, PRODUCT_REQUEST, PRODUCT_SUCCESS } from "../redusers/prod
 import axios from "axios";
 export const getProducts = (query) => async(dispatch) => {
     try {
-        console.log(query);
-        console.log(query);
         dispatch(PRODUCT_REQUEST());
         if (query.category === undefined) {
             query.category = 'all';

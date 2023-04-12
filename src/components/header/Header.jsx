@@ -5,8 +5,14 @@ import SearchBar from './searchBar/SearchBar'
 import logo from '../../images/logo4.png'
 import Avatar from '@mui/material/Avatar';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../actions/userAction';
 const Header = () => {
-
+  const { user, isAuthenticate } = useSelector(state => state.User);
+  const dispatch=useDispatch()
+  const userLogout=()=>{
+    dispatch(logout())
+  }
   return (
     <>
       <div className='header'>
@@ -18,7 +24,25 @@ const Header = () => {
         </div>
         <div className="rightDiv">
           <ShoppingCartOutlinedIcon />
-          <Avatar alt="Remy Sharp" src="" />
+          <div className="menuDiv">
+            <Avatar className='menuBar' alt="Remy Sharp" src="" />
+            <div className={isAuthenticate ? 'menuItems' : 'loginMenu'}>
+              {isAuthenticate ?
+                <ul>
+                  <li> <NavLink to='/account/me'> Account </NavLink></li>
+                  <li> <NavLink to='/myorder'> Orders</NavLink></li>
+                  {user && user.role === 'seller' ?
+                    <li> <NavLink to='/dashboard'> Dashboard</NavLink></li> :
+                    <li><NavLink to='/becomeaseller' >Become a Seller</NavLink></li>
+                  }
+                  <li onClick={userLogout}> <NavLink to=''> Log Out</NavLink></li>
+                </ul> :
+                <ul>
+                  <li><NavLink to='/login' >Login</NavLink></li>
+                </ul>
+              }
+            </div>
+          </div>
         </div>
       </div>
       <div className="linkHeaderMain">
