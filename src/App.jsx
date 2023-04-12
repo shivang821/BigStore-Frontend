@@ -1,5 +1,8 @@
+
 import './App.css'
 import React, { useEffect } from 'react'
+// import dotenv from  'dotenv'
+// dotenv.config({path:'../.env'})
 import Header from './components/header/Header';
 import { Routes, Route, useSearchParams } from 'react-router-dom';
 import Home from './components/Home/Home';
@@ -11,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from './actions/userAction';
 import Signup from './components/auth/Signup';
 import { USER_RESET } from './redusers/userReducer';
+
 const Product = React.lazy(() => {
   return new Promise(resolve => {
     setTimeout(() => resolve(import('./components/product/Product')), 1000);
