@@ -1,0 +1,135 @@
+.dashboard {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.dashboardTop {
+    height: 20rem;
+    padding-top: 3.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.dashboardCards {
+    height: 12rem;
+    width: 20rem;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 8px 32px 0 rgba(181, 183, 228, 0.212);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border-radius: 10px;
+    border: 1px solid #f5f5f5;
+    position: relative;
+}
+
+.dashboardCards:nth-child(2) {
+    background: var(--light);
+    box-shadow: 0 8px 32px 0 rgba(166, 168, 221, 0.37);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.dashboardCards:nth-child(2)>svg {
+    color: white;
+    top: 1rem;
+}
+
+.dashboardCards>svg {
+    position: absolute;
+    color: var(--light);
+    font-size: 2rem;
+    right: 1.5rem;
+    top: 1rem;
+}
+
+.dashboardBottom {
+    height: auto;
+    padding: 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart2 {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+}
+
+.chart1 {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width:767px) {
+    .dashboard {
+        position: absolute;
+    }
+    .chart2 {
+        height: auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .dashboardTop {
+        overflow-x: scroll !important;
+        background-color: red;
+        display: flex;
+        width: auto;
+        align-items: center;
+        justify-content: center;
+    }
+    .dashboardCards {
+        height: 7rem;
+        width: 20rem;
+        background: rgb(255, 255, 255);
+        box-shadow: 0 8px 32px 0 rgba(181, 183, 228, 0.212);
+        backdrop-filter: blur(6.5px);
+        -webkit-backdrop-filter: blur(6.5px);
+        border-radius: 10px;
+        border: 1px solid #f5f5f5;
+        position: relative;
+    }
+    .dashboardCards:nth-child(2) {
+        background: var(--light);
+        box-shadow: 0 8px 32px 0 rgba(166, 168, 221, 0.37);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .dashboardCards:nth-child(2)>svg {
+        color: white;
+        top: 1rem;
+    }
+    .dashboardCards>svg {
+        position: absolute;
+        color: var(--light);
+        font-size: 2rem;
+        right: 1.5rem;
+        top: 1rem;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1439px) {
+    .chart2 {
+        margin: 4rem;
+        height: auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

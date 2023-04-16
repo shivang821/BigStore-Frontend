@@ -310,7 +310,7 @@
         right: 0;
         border: none;
         border-top-left-radius: 10px;
-        transition: all .7s linear;
+        transition: all .5s ease-in;
         top: calc(7vh + 4rem);
     }
     .productBottom1 .arrowIcon {

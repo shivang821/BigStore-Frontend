@@ -3,7 +3,7 @@ import './header.css'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import SearchBar from './searchBar/SearchBar'
 import logo from '../../images/logo4.png'
-import Avatar from '@mui/material/Avatar';
+import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userAction';
@@ -25,14 +25,14 @@ const Header = () => {
         <div className="rightDiv">
           <ShoppingCartOutlinedIcon />
           <div className="menuDiv">
-            <Avatar className='menuBar' alt="Remy Sharp" src="" />
+          <MenuIcon className='menuBar MuiAvatar-root'/>
             <div className={isAuthenticate ? 'menuItems' : 'loginMenu'}>
               {isAuthenticate ?
                 <ul>
                   <li> <NavLink to='/account/me'> Account </NavLink></li>
                   <li> <NavLink to='/myorder'> Orders</NavLink></li>
                   {user && user.role === 'seller' ?
-                    <li> <NavLink to='/dashboard'> Dashboard</NavLink></li> :
+                    <li> <NavLink to='/dashboard/home'> Dashboard</NavLink></li> :
                     <li><NavLink to='/becomeaseller' >Become a Seller</NavLink></li>
                   }
                   <li onClick={userLogout}> <NavLink to=''> Log Out</NavLink></li>

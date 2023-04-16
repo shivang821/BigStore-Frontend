@@ -2,4 +2,5 @@
     height: 10rem;
     width: 100%;
     background-color: var(--dark);
+    z-index: 18;
 }

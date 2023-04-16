@@ -1,6 +1,6 @@
     .searchBar {
-        height: 70%;
-        width: 40%;
+        height: 2.2rem;
+        width: 22rem;
         display: flex;
         border-radius: 7px;
         display: grid;
@@ -55,10 +55,12 @@
         font-weight: bolder !important;
     }
     
-    @media screen and (min-width:0) and (max-width:768px) {
+    @media screen and (min-width:0) and (max-width:502px) {
         .searchBar {
-            height: 60%;
+            height: 2rem;
             width: 100%;
+            min-width: 5rem;
+            max-width: 13rem;
             display: flex;
             border-radius: 5px;
             display: grid;
@@ -83,10 +85,38 @@
         }
     }
     
-    @media screen and (min-width:769px) and (max-width:1440px) {
+    @media screen and (min-width:503px) and (max-width:767px) {
         .searchBar {
-            height: 70%;
-            width: 60%;
+            height: 2rem;
+            width: 15rem;
+            display: flex;
+            border-radius: 5px;
+            display: grid;
+            grid-template-columns: 3.3fr .7fr;
+        }
+        .searchBarLeft {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .searchBarLeft>input {
+            padding: 0 .7rem;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            font-size: 1rem;
+        }
+        .searchBarRight {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        .searchBarRight>svg {
+            font-size: 1.7rem;
+        }
+    }
+    
+    @media screen and (min-width:768px) and (max-width:1439px) {
+        .searchBar {
+            height: 2.2rem;
+            width: 20rem;
             grid-template-columns: 3.4fr .6fr;
         }
     }

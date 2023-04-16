@@ -14,7 +14,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from './actions/userAction';
 import Signup from './components/auth/Signup';
 import { USER_RESET } from './redusers/userReducer';
-
+import DashboardLayout from './components/dashboard/DashboardLayout';
+import {Dashboard} from './components/dashboard/Dashboard';
+import ErrorPage from './components/ErrorPage/ErrorPage.jsx'
 const Product = React.lazy(() => {
   return new Promise(resolve => {
     setTimeout(() => resolve(import('./components/product/Product')), 1000);
@@ -40,6 +42,11 @@ function App() {
           <Route path='/product/:id' element={<ProductDetails />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path={'/dashboard/'} element={<ErrorPage/>} />
+          <Route exact path='/dashboard/' element={<DashboardLayout/>} >
+            <Route path='home' element={<Dashboard/>} />
+          </Route>
+          <Route path={'/*'} element={<ErrorPage/>} />
         </Routes>
       </Suspense>
       <Footer />
