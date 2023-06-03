@@ -6,7 +6,8 @@ const userReducer = createSlice({
         loading: false,
         error: null,
         isAuthenticate: false,
-        user: null
+        user: null,
+        isUpdated: false
     },
     reducers: {
         USER_REQUEST: (state) => {
@@ -35,8 +36,20 @@ const userReducer = createSlice({
             state.error = action.payload;
             state.loading = false
         },
+        UPDATE_SUCCESS: (state, action) => {
+            state.loading = false
+            state.user = action.payload;
+            state.isUpdated = true;
+            state.isAuthenticate = true
+        },
+        UPDATE_FAIL: (state, action) => {
+            state.error = action.payload;
+            state.loading = false
+            state.isUpdated = false;
+            state.isAuthenticate = false
+        }
     }
 })
 
-export const { USER_FAIL, USER_REQUEST, USER_RESET, USER_SUCCESS, LOGOUT_SUCCESS, LOGOUT_FAIL } = userReducer.actions;
+export const { USER_FAIL, USER_REQUEST, USER_RESET, USER_SUCCESS, LOGOUT_SUCCESS, LOGOUT_FAIL, UPDATE_FAIL, UPDATE_SUCCESS } = userReducer.actions;
 export default userReducer.reducer

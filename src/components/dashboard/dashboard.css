@@ -35,15 +35,32 @@
 
 .dashboardCards:nth-child(2)>svg {
     color: white;
-    top: 1rem;
 }
 
 .dashboardCards>svg {
     position: absolute;
     color: var(--light);
-    font-size: 2rem;
+    font-size: 3.5rem;
     right: 1.5rem;
-    top: 1rem;
+    top: calc((100% - 3rem) / 2);
+}
+
+.dashboardCards>div {
+    height: 5rem;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    left: 1.5rem;
+    letter-spacing: 1px;
+    top: calc((100% - 5rem) / 2);
+    color: var(--light);
+    position: absolute;
+}
+
+.dashboardCards:nth-child(2)>div {
+    color: white;
 }
 
 .dashboardBottom {

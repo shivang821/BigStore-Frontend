@@ -5,10 +5,10 @@ import img2 from '../../../../images/mac.webp'
 import img3 from '../../../../images/1phone.jfif'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { useSelector } from 'react-redux'
 const ProductSlider = () => {
-    const images = [
-        img2, img3, img1,img2,img2,img3
-    ]
+    const {pDetails}=useSelector(state=>state.ProductDetails)
+    const [images,setImages]=useState([])
     const ref1=useRef()
     let [count,setCount]=useState({
         newCount:0,
@@ -19,7 +19,11 @@ const ProductSlider = () => {
         transform:`translateX(-${(count.newCount%i)*100}%)`
     }
     useEffect(()=>{
-        if(ref1.current){
+        if(pDetails){
+            setImages(pDetails.images)
+        }
+        if(ref1.current&&images.length>0){
+
             ref1.current.children[count.newCount].style.backgroundColor='var(--light)'
             if(count.preCount!==-1)ref1.current.children[count.preCount].style.backgroundColor='#dadada'
         }
@@ -43,7 +47,7 @@ const ProductSlider = () => {
             }, 2500);
             return ()=>clearInterval(interval);
       
-    },[count])
+    },[images.length>1&&count,pDetails])
     const goToImg=(i)=>{
     }
     const back=()=>{
@@ -71,7 +75,7 @@ const ProductSlider = () => {
             <div className="imageContainer">
 
                 {images.map((img, ind) => {
-                    return <img style={styles} src={img} alt="" key={ind} />
+                    return <img style={styles} src={img.url} alt="" key={ind} />
                 })}
             </div>
             <button className="left" onClick={back}><KeyboardArrowLeftIcon/></button>

@@ -10,12 +10,12 @@ export const Dashboard = () => {
   const [pieState, setPieState] = useState({
     series: [44, 55],
     options: {
-      colors: ['#f4a424', '#f5f5f5'],
+      colors: ['#f4a424', '#14213d'],
       chart: {
         width: 380,
         type: 'pie',
       },
-      labels: ['available products', 'out of stock products'],
+      labels: ['Available Products', 'Out of Stock'],
       // labels:{
       //   show: false
       // },
@@ -43,7 +43,7 @@ export const Dashboard = () => {
   const [state, setState] = useState(
     {
       options: {
-        colors: ['#f4a424', '#9C27B0'],
+        colors: ['#f4a424', '#14213d'],
         chart: {
           id: "chart",
           toolbar: {
@@ -92,12 +92,24 @@ export const Dashboard = () => {
     <div className='dashboard'>
       <section className="dashboardTop">
         <div className="dashboardCards">
+          <div>
+            <h2>Total Earning</h2>
+            <h2>₹44220</h2>
+          </div>
           <CurrencyRupeeIcon />
         </div>
         <div className="dashboardCards">
+          <div>
+            <h2>Total Orders</h2>
+            <h2>553</h2>
+          </div>
           <ListAltIcon />
         </div>
         <div className="dashboardCards">
+          <div>
+            <h2>Pending Orders</h2>
+            <h2>43</h2>
+          </div>
           <PendingActionsIcon />
         </div>
       </section>
@@ -107,11 +119,11 @@ export const Dashboard = () => {
             options={state.options}
             series={state.series}
             type="line"
-            width={window.innerWidth > 1439 ? 1000 : window.innerWidth >= 1001 && window.innerWidth <= 1439 ? 800 : window.innerWidth >= 768 && window.innerWidth <= 1000 ? 600 :window.innerWidth>=465&&window.innerWidth<767?500:400}
+            width={window.innerWidth > 1439 ? 1000 : window.innerWidth >= 1001 && window.innerWidth <= 1439 ? 800 : window.innerWidth >= 768 && window.innerWidth <= 1000 ? 600 : window.innerWidth >= 465 && window.innerWidth < 767 ? 500 : 400}
           />
         </div>
         <div className="chart2">
-          <ReactApexChart options={pieState.options} series={pieState.series} type="pie" width={window.innerWidth >= 1440 ? 700 : window.innerWidth >= 1001 && window.innerWidth <= 1439 ? 650 : window.innerWidth >= 768 && window.innerWidth <= 1000 ? 500 :400}/>
+          <ReactApexChart options={pieState.options} series={pieState.series} type="pie" width={window.innerWidth >= 1440 ? 700 : window.innerWidth >= 1001 && window.innerWidth <= 1439 ? 650 : window.innerWidth >= 768 && window.innerWidth <= 1000 ? 500 : 400} />
         </div>
       </section>
     </div>

@@ -1,0 +1,102 @@
+.sellerPage {
+    height: 100vh;
+    width: 100%;
+    padding: 5.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.sellerCenter {
+    height: 25rem;
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 20px 0px #e9e6e6;
+}
+
+.sellerTop {
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.sellerMiddle {
+    height: 70%;
+    display: flex;
+    align-items: center;
+    padding-top: 3rem;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+.sellerMiddle>label{
+    position: absolute;
+    transform: translate(-25%,-2rem);
+    font-size: 1.2rem;
+    font-weight: 550;
+    color: var(--light);
+    /* transform: translateX(-50%); */
+}
+.sellerMiddle>input {
+    width: 15rem;
+    height: 2.5rem;
+    background-color: #f5f5f5;
+    border: none;
+    outline: none;
+    padding: 0 .4rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    color: var(--light);
+    caret-color: var(--light);
+}
+
+.sellerMiddle>input::placeholder {
+    color: rgb(190, 190, 190);
+}
+
+.sellerMiddle>button {
+    width: 15rem;
+    height: 2.5rem;
+    background-color: var(--light);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    transition: all .5s;
+    box-sizing: border-box;
+    font-weight: 550;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.sellerMiddle>button:disabled::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.445);
+}
+
+.sellerMiddle>button:disabled {
+    border: 2px solid #ffcb70;
+}
+
+.sellerMiddle>button:not(:disabled):hover {
+    border: 2px solid var(--light);
+    background-color: transparent;
+    color: var(--light);
+}

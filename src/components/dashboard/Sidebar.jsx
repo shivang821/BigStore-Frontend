@@ -53,10 +53,10 @@ const Sidebar = () => {
                 <div onClick={() => { setOpen(!open) }} className='slideIcon' >{open ? <KeyboardArrowLeftIcon /> : <KeyboardArrowRightIcon />}</div>
             }
             {open && <div className="sidebar1">
-                <NavLink to='/dashboard/home' >Dashboard</NavLink>
-                <NavLink to='/dashboard/products' >All Products</NavLink>
-                <NavLink to='/dashboard/create/new/product' >Create Product</NavLink>
-                <NavLink to='/dashboard/orders' >Orders</NavLink>
+                <NavLink exact activeClassName='active' to='/dashboard/home' >Dashboard</NavLink>
+                <NavLink exact activeClassName='active' to='/dashboard/products' >All Products</NavLink>
+                <NavLink exact activeClassName='active' to='/dashboard/create/new/product' >Create Product</NavLink>
+                <NavLink exact activeClassName='active' to='/dashboard/orders' >Orders</NavLink>
 
             </div>}
         </div>

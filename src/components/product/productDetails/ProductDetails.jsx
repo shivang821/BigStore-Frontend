@@ -4,11 +4,15 @@ import {useParams,useLocation} from 'react-router-dom'
 import ProductSlider from './productSlider/ProductSlider'
 import ProductInformation from './ProductInformation/ProductInformation.jsx'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { productDetail } from '../../../actions/productAction'
 const ProductDetails = () => {
     const {id} =useParams()
+    const dispatch=useDispatch()
     useEffect(()=>{
       window.scrollTo(0,0);
-    })
+      dispatch(productDetail(id))
+    },[id])
   return (
     <>
     <div className="productDetails">

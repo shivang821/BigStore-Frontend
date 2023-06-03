@@ -17,6 +17,10 @@ import { USER_RESET } from './redusers/userReducer';
 import DashboardLayout from './components/dashboard/DashboardLayout';
 import {Dashboard} from './components/dashboard/Dashboard';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx'
+import CreateProduct from './components/dashboard/NewProduct/CreateProduct.jsx'
+import Seller from './components/BecomeASeller/Seller';
+import AddToCart from './components/product/AddToCart/AddToCart';
+
 const Product = React.lazy(() => {
   return new Promise(resolve => {
     setTimeout(() => resolve(import('./components/product/Product')), 1000);
@@ -42,9 +46,12 @@ function App() {
           <Route path='/product/:id' element={<ProductDetails />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/becomeaseller' element={<Seller />} />
+          <Route path='/cart' element={<AddToCart />} />
           <Route path={'/dashboard/'} element={<ErrorPage/>} />
           <Route exact path='/dashboard/' element={<DashboardLayout/>} >
             <Route path='home' element={<Dashboard/>} />
+            <Route path='create/new/product' element={<CreateProduct/>} />
           </Route>
           <Route path={'/*'} element={<ErrorPage/>} />
         </Routes>

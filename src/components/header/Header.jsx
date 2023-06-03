@@ -4,28 +4,32 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import SearchBar from './searchBar/SearchBar'
 import logo from '../../images/logo4.png'
 import MenuIcon from '@mui/icons-material/Menu';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userAction';
 const Header = () => {
+  const navigate=useNavigate()
   const { user, isAuthenticate } = useSelector(state => state.User);
   const dispatch=useDispatch()
   const userLogout=()=>{
     dispatch(logout())
   }
+  const goToHome=()=>{
+    navigate('/')
+  }
   return (
     <>
       <div className='header'>
-        <div className="brand">
-          <img src={logo} alt="" />
+        <div  className="brand">
+          <img style={{cursor:'pointer'}} onClick={goToHome} src={logo} alt="" />
         </div>
         <div className="centerDiv">
           <SearchBar />
         </div>
         <div className="rightDiv">
-          <ShoppingCartOutlinedIcon />
+          <ShoppingCartOutlinedIcon onClick={()=>navigate('/cart')} style={{cursor:'pointer'}} />
           <div className="menuDiv">
-          <MenuIcon className='menuBar MuiAvatar-root'/>
+          <MenuIcon style={{cursor:'pointer'}} className='menuBar MuiAvatar-root'/>
             <div className={isAuthenticate ? 'menuItems' : 'loginMenu'}>
               {isAuthenticate ?
                 <ul>
