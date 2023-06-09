@@ -1,33 +1,19 @@
 import React from 'react'
-import './productCard.css'
+import './orderCard.css'
 import DeleteIcon from '@mui/icons-material/Delete';
 import ReactStars from 'react-rating-stars-component'
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { removeFromCart } from '../../../../actions/cartAction';
-const ProductCard = ({item,addItem,removeItem}) => {
-  const dispatch=useDispatch()
-  const checkItem=(e)=>{
-    if(e.target.checked){
-      addItem(item)
+const OrderCard = ({item}) => {
+    const options = {
+        edit: false,
+        color: "#989898",
+        activeColor: "#f4a424",
+        value: item.product.rating,
+        backgroundColor: "whitesmoke",
+        isHalf: true,
+        // size: 20
+        size: window.innerWidth>1439?20:window.innerWidth>767?17:14
     }
-    else{
-      removeItem(item._id)
-    }
-  }
-  const removeItemFromCart=()=>{
-    dispatch(removeFromCart(item._id))
-  }
-  const options = {
-    edit: false,
-    color: "#989898",
-    activeColor: "#f4a424",
-    value: item.rating,
-    backgroundColor: "whitesmoke",
-    isHalf: true,
-    // size: 20
-    size: window.innerWidth>1439?20:window.innerWidth>767?17:14
-}
   return (
     <div className='cartCard' >
         <div className="itemCheck">
@@ -51,4 +37,4 @@ const ProductCard = ({item,addItem,removeItem}) => {
   )
 }
 
-export default ProductCard
+export default OrderCard

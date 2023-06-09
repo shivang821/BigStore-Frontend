@@ -57,11 +57,6 @@
     gap: 2rem;
 }
 
-.rightDiv>svg {
-    height: 2rem;
-    width: 2rem;
-    color: var(--light);
-}
 
 .rightDiv .MuiAvatar-root {
     margin-left: 2rem;
@@ -238,7 +233,41 @@
     opacity: 1;
     height: 3rem;
 }
-
+.rightDiv>svg {
+    height: 2rem;
+    width: 2rem;
+    color: var(--light);
+}
+.cartDiv{
+    height: 3rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.cartDiv>svg{
+    height: 2rem;
+    width: 2rem;
+    color: var(--light);
+}
+.cartNumber{
+    height: 1.3rem;
+    width: 1.3rem;
+    border-radius: 50%;
+    position: absolute;
+    background-color: white ;
+    right: -.8rem;
+    top: .1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: .15rem;
+    padding-right: .07rem;
+    color: var(--light);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
 @media screen and (max-width:767px) {
     .header {
         height: 3.5rem;
@@ -307,6 +336,17 @@
         justify-content: center !important;
         align-items: center;
         padding-right: 0;
+    }
+    .cartNumber{
+        height: 1rem;
+        width: 1rem;
+        border-radius: 50%;
+        right: -.5rem;
+        top: .15rem;
+        padding-bottom: .15rem;
+        padding-right: 0rem;
+        font-size: 1rem;
+        font-weight: bold;
     }
 }
 

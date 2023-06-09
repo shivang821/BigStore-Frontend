@@ -15,11 +15,15 @@ import { loadUser } from './actions/userAction';
 import Signup from './components/auth/Signup';
 import { USER_RESET } from './redusers/userReducer';
 import DashboardLayout from './components/dashboard/DashboardLayout';
-import {Dashboard} from './components/dashboard/Dashboard';
+import { Dashboard } from './components/dashboard/Dashboard';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx'
 import CreateProduct from './components/dashboard/NewProduct/CreateProduct.jsx'
 import Seller from './components/BecomeASeller/Seller';
 import AddToCart from './components/product/AddToCart/AddToCart';
+import { loadCart } from './actions/cartAction';
+import Checkout from './components/product/orderRoutes/CheckOut';
+import Success from './components/product/orderRoutes/Success';
+import Myorder from './components/myorder/Myorder';
 
 const Product = React.lazy(() => {
   return new Promise(resolve => {
@@ -28,18 +32,20 @@ const Product = React.lazy(() => {
 })
 
 function App() {
-  const {error}=useSelector(state=>state.User)
-  const dispatch=useDispatch()
-  useEffect(()=>{
+  const { error } = useSelector(state => state.User)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
     dispatch(loadUser())
-    if(error){
+    if (error) {
       dispatch(USER_RESET())
     }
-  },[])
+    
+  }, [])
   return (
     <div className="App">
       <Header />
-      <Suspense fallback={<div style={{zIndex:'200',position:'absolute',top:'7vh',left:'0', height: "10rem", width: '100%', backgroundColor: 'red' }}></div>}>
+      <Suspense fallback={<div style={{ zIndex: '200', position: 'absolute', top: '7vh', left: '0', height: "10rem", width: '100%', backgroundColor: 'red' }}></div>}>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/product' element={<Product />} />
@@ -48,12 +54,15 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/becomeaseller' element={<Seller />} />
           <Route path='/cart' element={<AddToCart />} />
-          <Route path={'/dashboard/'} element={<ErrorPage/>} />
-          <Route exact path='/dashboard/' element={<DashboardLayout/>} >
-            <Route path='home' element={<Dashboard/>} />
-            <Route path='create/new/product' element={<CreateProduct/>} />
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/success' element={<Success/>} />
+          <Route path='/myorder' element={<Myorder/>} />
+          <Route path={'/dashboard/'} element={<ErrorPage />} />
+          <Route exact path='/dashboard/' element={<DashboardLayout />} >
+            <Route path='home' element={<Dashboard />} />
+            <Route path='create/new/product' element={<CreateProduct />} />
           </Route>
-          <Route path={'/*'} element={<ErrorPage/>} />
+          <Route path={'/*'} element={<ErrorPage />} />
         </Routes>
       </Suspense>
       <Footer />

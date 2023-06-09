@@ -9,7 +9,6 @@ export const getProducts = (query) => async(dispatch) => {
         // const url=`/api/product?${query.category&&'category':query.category}`
         const config = { headers: { "Content-Type": "application/json" } };
         const { data } = await axios.get(`/api/product?category=${query.category}`)
-        console.log(data.products);
         dispatch(PRODUCT_SUCCESS(data.products));
 
     } catch (error) {

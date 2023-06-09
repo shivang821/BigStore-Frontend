@@ -8,33 +8,40 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userAction';
 const Header = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
+  const {cartItems}=useSelector(state=>state.Cart)
+  const cartNumber=cartItems.length;
   const { user, isAuthenticate } = useSelector(state => state.User);
-  const dispatch=useDispatch()
-  const userLogout=()=>{
+  const dispatch = useDispatch()
+  const userLogout = () => {
     dispatch(logout())
   }
-  const goToHome=()=>{
+  const goToHome = () => {
     navigate('/')
   }
+  useEffect(()=>{
+  },[isAuthenticate])
   return (
     <>
       <div className='header'>
-        <div  className="brand">
-          <img style={{cursor:'pointer'}} onClick={goToHome} src={logo} alt="" />
+        <div className="brand">
+          <img style={{ cursor: 'pointer' }} onClick={goToHome} src={logo} alt="" />
         </div>
         <div className="centerDiv">
           <SearchBar />
         </div>
         <div className="rightDiv">
-          <ShoppingCartOutlinedIcon onClick={()=>navigate('/cart')} style={{cursor:'pointer'}} />
+          <div className='cartDiv'>
+            <ShoppingCartOutlinedIcon onClick={() => navigate('/cart')} style={{ cursor: 'pointer' }} />
+            <div className='cartNumber' ><p>{cartItems&&cartNumber}</p></div>
+          </div>
           <div className="menuDiv">
-          <MenuIcon style={{cursor:'pointer'}} className='menuBar MuiAvatar-root'/>
+            <MenuIcon style={{ cursor: 'pointer' }} className='menuBar MuiAvatar-root' />
             <div className={isAuthenticate ? 'menuItems' : 'loginMenu'}>
               {isAuthenticate ?
                 <ul>
                   <li> <NavLink to='/account/me'> Account </NavLink></li>
-                  <li> <NavLink to='/myorder'> Orders</NavLink></li>
+                  <li> <NavLink to='/myorder'>My Orders</NavLink></li>
                   {user && user.role === 'seller' ?
                     <li> <NavLink to='/dashboard/home'> Dashboard</NavLink></li> :
                     <li><NavLink to='/becomeaseller' >Become a Seller</NavLink></li>

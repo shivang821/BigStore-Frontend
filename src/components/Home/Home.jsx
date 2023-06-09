@@ -7,15 +7,18 @@ import ProductCard from '../product/ProductCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { PRODUCT_RESET } from '../../redusers/productReducer'
 import { getProducts } from '../../actions/productAction'
+import { loadCart } from '../../actions/cartAction'
 const Home = () => {
     const { product, loading, error, success } = useSelector(state => state.Product)
+    const {isAuthenticate}=useSelector(state=>state.User)
     const dispatch=useDispatch()
     useEffect(() => {
         dispatch(getProducts({ category: undefined }))
         if (error) {
             dispatch(PRODUCT_RESET())
         }
-    },[])
+        dispatch(loadCart())
+    },[isAuthenticate])
     const deals = [
         {
             url: '/product/?caterogy=[shirt,t-shirt]&price=lt:1299',

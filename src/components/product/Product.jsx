@@ -11,7 +11,7 @@ import { PRODUCT_RESET } from '../../redusers/productReducer';
 const Product = () => {
   const location = useLocation()
   const dispatch = useDispatch()
-  const {product,loading,error,success}=useSelector(state=>state.Product)
+  const { product, loading, error, success } = useSelector(state => state.Product)
   const [searchParams] = useSearchParams()
   const [pageName, setPageName] = useState()
   const ref1 = useRef();
@@ -40,7 +40,7 @@ const Product = () => {
   useEffect(() => {
     setPageName(searchParams.get('category'))
     dispatch(getProducts({ category: searchParams.get('category') }))
-    if(error){
+    if (error) {
       dispatch(PRODUCT_RESET())
     }
     document.addEventListener('click', handleClickOutside, true)
@@ -49,7 +49,7 @@ const Product = () => {
       document.removeEventListener('click', handleClickOutside, true)
       document.removeEventListener('scroll', handleClickOutside, true)
     }
-  },[searchParams.get('category')])
+  }, [searchParams.get('category')])
   // handling middleDiv
   if (flag && ref2?.current && !isInViewport1 && ref3?.current) {
     ref2.current.classList.add("fixedMiddleProductDiv");
@@ -76,26 +76,31 @@ const Product = () => {
   }
   return (
     <div className='productMain'>
-      <div className="productTop" ref={ref1}>
-        <ProductTop />
-      </div>
-      <div className="middleProductDiv" ref={ref2}>
-        <h2>{pageName} DEALS</h2>
-      </div>
-      <div className="productBottom" ref={ref3}>
-        <div className="productBottom1" ref={ref4}>
-          {(window.innerWidth < 1400) && <div onClick={() => { setOpen(!open) }} className='arrowIcon'>
-            {open ? <KeyboardArrowRightIcon ref={ref5} /> : <KeyboardArrowLeftIcon ref={ref5} />}</div>}
+      {loading ? <div style={{ zIndex: '0', position: 'absolute', top: '3.5rem', left: '0', height: "10rem", width: '100%', backgroundColor: 'red' }}></div>
+        :
+        <>
+          <div className="productTop" ref={ref1}>
+            <ProductTop />
+          </div>
+          <div className="middleProductDiv" ref={ref2}>
+            <h2>{pageName} DEALS</h2>
+          </div>
+          <div className="productBottom" ref={ref3}>
+            <div className="productBottom1" ref={ref4}>
+              {(window.innerWidth < 1400) && <div onClick={() => { setOpen(!open) }} className='arrowIcon'>
+                {open ? <KeyboardArrowRightIcon ref={ref5} /> : <KeyboardArrowLeftIcon ref={ref5} />}</div>}
 
-        </div>
-        <div className="productBottom2" >
-          {
-           product&&product.map((item,ind)=>{
-              return <ProductCard key={ind} details={item} />
-            })
-          }
-        </div>
-      </div>
+            </div>
+            <div className="productBottom2" >
+              {
+                product && product.map((item, ind) => {
+                  return <ProductCard key={ind} details={item} />
+                })
+              }
+            </div>
+          </div>
+        </>
+      }
     </div>
   )
 }
