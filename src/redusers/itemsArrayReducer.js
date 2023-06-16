@@ -7,7 +7,6 @@ const itemsReducer=createSlice({
     },
     reducers:{
         ADD_ITEMS:(state,action)=>{
-            console.log('hi');
             state.itemsArray=action.payload
         }
     }

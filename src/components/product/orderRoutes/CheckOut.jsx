@@ -9,7 +9,7 @@ import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import HomeIcon from '@mui/icons-material/Home';
 import PhoneIcon from '@mui/icons-material/Phone';
 import logo from '../../../../src/images/sqlogo.jpg'
-import { createNewOrder } from '../../../actions/orderAction';
+import { createNewOrder, orderReset } from '../../../actions/orderAction';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 const Checkout = () => {
@@ -43,10 +43,7 @@ const Checkout = () => {
         if (user) {
             setShippingDetail(user.shippingDetails)
         }
-        if(success){
-            navigate('/success',{state:{from:'checkout'}})
-        }
-    }, [user,success])
+    }, [user])
     const saveUser = () => {
         dispatch(updateUser(shippingDetail))
         setIsChanged(!isChanged)
@@ -70,8 +67,10 @@ const Checkout = () => {
             order_id: order.id,
             callback_url: "/api/payment-verification",
             handler: function (response) {
-                const data = { itemsArray, totalPrice,paymentDetails:response }
+                const data = { itemsArray, totalPrice,paymentDetails:response,shippingDetail }
                 dispatch(createNewOrder(data))
+                localStorage.removeItem('itemsArray')
+                navigate('/success')
             },
             prefill: {
                 name: user.name,
@@ -87,8 +86,6 @@ const Checkout = () => {
         };
         const razor = window.Razorpay(options)
         razor.open()
-
-
     }
     return (
         <div className='checkOut1' >

@@ -10,6 +10,7 @@ import ElectronicsTop from './productTopSections/ElectronicsTop'
 import FurnitureTop from './productTopSections/FurnitureTop'
 import ApplianceTop from './productTopSections/ApplianceTop'
 import GroceryTop from './productTopSections/GroceryTop'
+import SearchResultTop from './productTopSections/SearchResultTop'
 const ProductTop = () => {
     const [searchParams] = useSearchParams()
     const category=searchParams.get('category')
@@ -20,12 +21,13 @@ const ProductTop = () => {
             case 'electronics':return <ElectronicsTop/>;
             case 'furniture':return <FurnitureTop/>;
             case 'appliances':return <ApplianceTop/>;
-            case 'grocery':return <GroceryTop/>
+            case 'grocery':return <GroceryTop/>;
+            default: return <SearchResultTop/>
         }
     }
     return (
         <>
-            {func()}
+            {category?func():<SearchResultTop/>}
             
         </>
     )

@@ -1,0 +1,216 @@
+.orderCard {
+    min-height: 10rem;
+    height: auto;
+    width: 45rem;
+    transition: all 1s linear;
+    border-radius: 10px;
+}
+
+.showMore {
+    color: var(--light);
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    position: absolute;
+    bottom: .5rem;
+    right: 1rem;
+    border-radius: 7px;
+    border: 2px solid transparent;
+    transition: all .5s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.showMore>svg {
+    font-size: 2rem;
+}
+
+.orderCardTop {
+    position: relative;
+    height: 10rem;
+    background-color: white;
+    border-radius: 10px;
+    transition: all .5s linear;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    width: 45rem;
+}
+
+.orderCard:hover {
+    box-shadow: 0px 0px 50px 20px #c9c4c441;
+    /* transform: translateY(-5px); */
+}
+
+.orderCard>div {
+    height: 100%;
+    width: 100%;
+}
+
+.orderCard1 {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-right: 4px solid #f5f5f5;
+    padding: 1rem;
+}
+
+.orderCard1>img {
+    aspect-ratio: 1/1;
+    width: 100%;
+    object-fit: contain;
+    height: 100%;
+}
+
+.orderCard2 {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.orderCard21 {
+    height: auto;
+}
+
+.orderCard21>a {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--light);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.orderCard22 {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    font-weight: 550;
+}
+
+.orderCard23, .orderCard24 {
+    font-weight: 550;
+    font-size: 1.1rem;
+    color: var(--light);
+}
+
+.orderCardBottom {
+    height: 0;
+    width: 100%;
+    border-top: 4px solid #f5f5f5;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.orderCardBottomOpen {
+    height: auto;
+    width: 100%;
+    border-top: 4px solid #f5f5f5;
+    border-radius: 10px;
+    background-color: white;
+    transition: all 1s linear;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem 0;
+    justify-content: center;
+    opacity: 1;
+}
+
+.orderCardBottomOpen>div {
+    display: grid;
+    grid-template-columns: 1.3fr 4fr;
+    gap: 4px;
+}
+
+.orderCardBottomOpen>div:nth-child(1) {
+    text-transform: capitalize;
+}
+
+.orderCardBottomOpen>div>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    font-weight: 550;
+    font-size: 1.1rem;
+}
+
+.orderCardBottomOpen>div>div:first-child {
+    padding-left: 1rem;
+    justify-content: flex-start;
+}
+
+.orderCardBottomOpen>div>div:last-child {
+    padding: 0 1rem;
+    justify-content: flex-start;
+}
+
+.orderCardBottomClose {
+    background-color: white;
+    background-color: transparent;
+    height: 0 !important;
+    transition: all 1s linear;
+    border-radius: 10px;
+    border-top: 0px solid transparent;
+    opacity: 0;
+}
+
+@media screen and (min-width:768px) and (max-width:1439px) {
+    .orderCard {
+        min-height: 10rem;
+        height: auto;
+        width: 80%;
+        max-width: 40rem;
+    }
+
+    .orderCardTop {
+        height: 10rem;
+        width: 80%;
+        max-width: 40rem;
+    }
+
+    .orderCardBottomOpen>div>div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--light);
+        font-weight: 550;
+        font-size: 1rem;
+        text-transform: capitalize;
+    }
+}
+
+@media screen and (min-width:0) and (max-width:767px) {
+    .orderCard {
+        min-height: 10rem;
+        height: auto;
+        width: 97%;
+        max-width: 30rem;
+    }
+
+    .orderCardTop {
+        height: 10rem !important;
+        width: 97%;
+        max-width: 30rem;
+    }
+
+    .orderCard:hover {
+        box-shadow: none;
+    }
+
+    .orderCardBottomOpen>div>div {
+        font-weight: bold;
+        font-size: .6rem;
+    }
+}

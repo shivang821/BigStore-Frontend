@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect, useState, useRef } from 'react'
 import './productPage.css'
-import { useSearchParams, useLocation } from 'react-router-dom'
+import { useSearchParams, useLocation, useParams } from 'react-router-dom'
 import ProductCard from './ProductCard'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
@@ -8,9 +8,17 @@ import ProductTop from './ProductTop'
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../actions/productAction';
 import { PRODUCT_RESET } from '../../redusers/productReducer';
+import { useAlert } from 'react-alert';
+import Loader from '../loading/Loader';
 const Product = () => {
-  const location = useLocation()
   const dispatch = useDispatch()
+  const {success:ordersuccess}=useSelector(state=>state.Order)
+  const [sort,setSort]=useState(0)
+  const [gt,setGt]=useState(0)
+  const [lt,setLt]=useState(200000)
+  const [apply,setApply]=useState(false)
+  const [isChanged,setIsChanged]=useState(false)
+  const alert = useAlert()
   const { product, loading, error, success } = useSelector(state => state.Product)
   const [searchParams] = useSearchParams()
   const [pageName, setPageName] = useState()
@@ -20,9 +28,10 @@ const Product = () => {
   const ref4 = useRef()
   const ref5 = useRef()
   const [open, setOpen] = useState(false);
-  const isInViewport1 = useIsInViewport(ref1);
   const [flag, setFlag] = useState(false);
-
+  const [pageChange,setPageChange]=useState(false)
+  // let isInViewport1 = useIsInViewport(ref1);
+  let isInViewport1=true;
   if (window.innerWidth < 1400) {
     if (open && ref4?.current) {
       ref4.current.style.transform = 'translateX(0)'
@@ -37,20 +46,45 @@ const Product = () => {
   setTimeout(() => {
     setFlag(true)
   }, 1000);
+  useEffect(()=>{
+    setSort(0);
+    setGt(0)
+    setLt(200000)
+    setPageChange(true)
+  },[searchParams.get('category'),searchParams.get('keyword'),ordersuccess])
   useEffect(() => {
-    setPageName(searchParams.get('category'))
-    dispatch(getProducts({ category: searchParams.get('category') }))
-    if (error) {
+    searchParams.get('category')&&setPageName(searchParams.get('category').toUpperCase())
+    if(!success&&pageChange){
+      let lte,gte;
+      if(!gt||gt<0){
+        setGt(0)
+        gte=0;
+      }else{
+        gte=gt;
+      }
+      if(!lt||lt>200000){
+        setLt(200000)
+        lte=200000
+      }
+      else{
+        lte=lt;
+      }
+      const query=searchParams.get('category')?{ category: searchParams.get('category'),lt:lte,gt:gte,sort }:{keyword:searchParams.get('keyword'),lt,gt,sort};
+      dispatch(getProducts(query))
+      setPageChange(false)
+    }
+    if (error||success) {
       dispatch(PRODUCT_RESET())
     }
+    
     document.addEventListener('click', handleClickOutside, true)
     document.addEventListener('scroll', handleClickOutside, true)
     return () => {
       document.removeEventListener('click', handleClickOutside, true)
       document.removeEventListener('scroll', handleClickOutside, true)
     }
-  }, [searchParams.get('category')])
-  // handling middleDiv
+  }, [searchParams.get('category'),product,searchParams.get('keyword'),apply,pageChange,ordersuccess])
+  
   if (flag && ref2?.current && !isInViewport1 && ref3?.current) {
     ref2.current.classList.add("fixedMiddleProductDiv");
     ref2.current.classList.remove("middleProductDiv");
@@ -68,7 +102,6 @@ const Product = () => {
     ref2.current.classList.add("middleProductDiv");
     ref2.current.classList.remove("fixedMiddleProductDiv");
   }
-  // handling click outside the filterBar
   function handleClickOutside(e) {
     if (ref4.current && !ref4.current.contains(e.target)) {
       setOpen(false);
@@ -76,22 +109,67 @@ const Product = () => {
   }
   return (
     <div className='productMain'>
-      {loading ? <div style={{ zIndex: '0', position: 'absolute', top: '3.5rem', left: '0', height: "10rem", width: '100%', backgroundColor: 'red' }}></div>
+      {loading ? <Loader/>
         :
         <>
           <div className="productTop" ref={ref1}>
             <ProductTop />
           </div>
           <div className="middleProductDiv" ref={ref2}>
-            <h2>{pageName} DEALS</h2>
+            {searchParams.get('keyword')?<h2>Search Results</h2>:<h2>{pageName} DEALS</h2>}
           </div>
           <div className="productBottom" ref={ref3}>
             <div className="productBottom1" ref={ref4}>
               {(window.innerWidth < 1400) && <div onClick={() => { setOpen(!open) }} className='arrowIcon'>
                 {open ? <KeyboardArrowRightIcon ref={ref5} /> : <KeyboardArrowLeftIcon ref={ref5} />}</div>}
-
+              <div className='productBottom11' >
+                <p className='filterHeading'>Filters :-</p>
+                <p onClick={()=>{setSort(1);setIsChanged(true)}}>Price low to high</p>
+                <p onClick={()=>{setSort(-1);setIsChanged(true)}}>Price high to low </p>
+                <p className='priceRangeHeading'>Price Range :-</p>
+                <div className='priceRangeDiv'><p >from :</p><input value={gt} onChange={(e)=>{ setGt(e.target.value);setIsChanged(true)}} type="number" /></div>
+                <div className='priceRangeDiv'><p >to :</p><input max={200000} value={lt} onChange={(e)=>{setLt(e.target.value);setIsChanged(true)}} type="number" /></div>
+                <div className='filterButtonDiv'>
+                  <button className='filterButton' disabled={!isChanged} onClick={()=>{setApply(!apply);setOpen(!open);setIsChanged(false);setPageChange(true)}}>Apply</button>
+                </div>
+              </div>
             </div>
             <div className="productBottom2" >
+              {
+                product && product.map((item, ind) => {
+                  return <ProductCard key={ind} details={item} />
+                })
+              }
+              {
+                product && product.map((item, ind) => {
+                  return <ProductCard key={ind} details={item} />
+                })
+              }
+              {
+                product && product.map((item, ind) => {
+                  return <ProductCard key={ind} details={item} />
+                })
+              }
+              {
+                product && product.map((item, ind) => {
+                  return <ProductCard key={ind} details={item} />
+                })
+              }
+              {
+                product && product.map((item, ind) => {
+                  return <ProductCard key={ind} details={item} />
+                })
+              }
+              {
+                product && product.map((item, ind) => {
+                  return <ProductCard key={ind} details={item} />
+                })
+              }
+              {
+                product && product.map((item, ind) => {
+                  return <ProductCard key={ind} details={item} />
+                })
+              }
               {
                 product && product.map((item, ind) => {
                   return <ProductCard key={ind} details={item} />

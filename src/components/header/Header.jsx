@@ -7,20 +7,26 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userAction';
+import { loadCart, clearError } from '../../actions/cartAction';
 const Header = () => {
   const navigate = useNavigate()
-  const {cartItems}=useSelector(state=>state.Cart)
-  const cartNumber=cartItems.length;
+  const { cartItems, error } = useSelector(state => state.Cart)
   const { user, isAuthenticate } = useSelector(state => state.User);
+  // const cartNumber = cartItems.length;
   const dispatch = useDispatch()
   const userLogout = () => {
     dispatch(logout())
+    window.location.reload()
   }
   const goToHome = () => {
     navigate('/')
   }
-  useEffect(()=>{
-  },[isAuthenticate])
+  useEffect(() => {
+    dispatch(loadCart())
+    if (error) {
+      dispatch(clearError())
+    }
+  }, [isAuthenticate])
   return (
     <>
       <div className='header'>
@@ -33,14 +39,14 @@ const Header = () => {
         <div className="rightDiv">
           <div className='cartDiv'>
             <ShoppingCartOutlinedIcon onClick={() => navigate('/cart')} style={{ cursor: 'pointer' }} />
-            <div className='cartNumber' ><p>{cartItems&&cartNumber}</p></div>
+            <div className='cartNumber' ><p>{cartItems && cartItems.length}</p></div>
           </div>
           <div className="menuDiv">
             <MenuIcon style={{ cursor: 'pointer' }} className='menuBar MuiAvatar-root' />
             <div className={isAuthenticate ? 'menuItems' : 'loginMenu'}>
               {isAuthenticate ?
                 <ul>
-                  <li> <NavLink to='/account/me'> Account </NavLink></li>
+                  <li> <NavLink to='/account/me'>My Account </NavLink></li>
                   <li> <NavLink to='/myorder'>My Orders</NavLink></li>
                   {user && user.role === 'seller' ?
                     <li> <NavLink to='/dashboard/home'> Dashboard</NavLink></li> :

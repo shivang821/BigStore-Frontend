@@ -1,0 +1,246 @@
+.submitReviewBox{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(236, 236, 236, 0.315);
+    backdrop-filter: blur(2px);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.submitReviewBoxCenterDiv{
+    height: 30rem;
+    width: 35rem;
+    background-color: white;
+    position: sticky;
+    top: calc((100% - 25rem) / 2);
+    left: calc((100% - 35rem) / 2);
+    border: 2px solid #f5f5f5;
+    border-radius: 10px;
+    animation: popupAnimation .5s linear ;
+    display: flex;
+    flex-direction: column;
+}
+.submitReviewBoxCenterDiv>form{
+    height: 100%;
+    width: 100%;
+}
+@keyframes popupAnimation {
+    from{
+        transform: scale(.5);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+.submitReviewBoxCenterDiv1{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    font-size: 1.2rem;
+}
+.submitReviewBoxCenterDiv2{
+    height: 65%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.submitReviewBoxCenterDiv21{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+}
+.submitReviewBoxCenterDiv21>h3{
+    color: var(--light);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.submitReviewBoxCenterDiv22{
+    height: 85%;
+    /* overflow-y: auto; */
+    width: 100%;
+    padding: 1rem 2rem;
+}
+.submitReviewBoxCenterDiv22>p{
+    color: var(--light);
+    font-size: 1.1rem;
+    font-weight: 550;
+    height: 10%;
+    
+}
+.submitReviewBoxCenterDiv22>textarea{
+    height: 90%;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #5a5a5a;
+    line-height: 1.5;
+    resize: none;
+}
+.submitReviewBoxCenterDiv3{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding:0 2rem;
+    gap: 1rem;
+}
+.submitReviewBoxCenterDiv3>button{
+    height: 2.5rem;
+    width: auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: var(--light);
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all .5s;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submitReviewBoxCenterDiv3>button:not(:disabled):hover{
+    background-color: transparent;
+    color: var(--light);
+    border: 2px solid var(--light);
+}
+.submitReviewBoxCenterDiv3>button:disabled{
+    background-color: #f8b851;
+    color: rgba(255, 255, 255, 0.767);
+}
+@media screen and (min-width:0) and (max-width:767px) {
+    .submitReviewBox{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(236, 236, 236, 0.315);
+        backdrop-filter: blur(2px);
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .submitReviewBoxCenterDiv{
+        height: 30rem;
+        width: 97%;
+        background-color: white;
+        position: sticky;
+        top: calc((100% - 25rem) / 2);
+        left: calc((100% - 35rem) / 2);
+        border: 2px solid #f5f5f5;
+        border-radius: 10px;
+        animation: popupAnimation .5s linear ;
+        display: flex;
+        flex-direction: column;
+    }
+    .submitReviewBoxCenterDiv>form{
+        height: 100%;
+        width: 100%;
+    }
+    @keyframes popupAnimation {
+        from{
+            transform: scale(.5);
+        }
+        to{
+            transform: scale(1);
+        }
+    }
+    .submitReviewBoxCenterDiv1{
+        height: 15%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--light);
+        font-size: 1.2rem;
+    }
+    .submitReviewBoxCenterDiv2{
+        height: 65%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .submitReviewBoxCenterDiv21{
+        height: 15%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 2rem;
+    }
+    .submitReviewBoxCenterDiv21>h3{
+        color: var(--light);
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+    .submitReviewBoxCenterDiv22{
+        height: 85%;
+        /* overflow-y: auto; */
+        width: 100%;
+        padding: 1rem 2rem;
+    }
+    .submitReviewBoxCenterDiv22>p{
+        color: var(--light);
+        font-size: 1.1rem;
+        font-weight: 550;
+        height: 10%;
+        
+    }
+    .submitReviewBoxCenterDiv22>textarea{
+        height: 90%;
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 1rem 0;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #5a5a5a;
+        line-height: 1.5;
+        resize: none;
+    }
+    .submitReviewBoxCenterDiv3{
+        height: 20%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding:0 2rem;
+        gap: 1rem;
+    }
+    .submitReviewBoxCenterDiv3>button{
+        height: 2.5rem;
+        width: auto;
+        padding: 14px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background-color: var(--light);
+        border: none;
+        outline: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: all .5s;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .submitReviewBoxCenterDiv3>button:not(:disabled):hover{
+        background-color: transparent;
+        color: var(--light);
+        border: 2px solid var(--light);
+    }
+    .submitReviewBoxCenterDiv3>button:disabled{
+        background-color: #f8b851;
+        color: rgba(255, 255, 255, 0.767);
+    }
+}

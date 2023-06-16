@@ -6,13 +6,18 @@ import { useEffect } from 'react'
 import { loadOrder } from '../../actions/orderAction'
 const Myorder = () => {
     const dispatch=useDispatch()
-    const {orders}=useSelector(state=>state.Order)
+    const {orders,success}=useSelector(state=>state.Order)
     useEffect(()=>{
         dispatch(loadOrder())
-    },[])
+    },[success])
   return (
     <div className='myorder' >
-        {/* <OrderCard/> */}
+        {
+            orders&&orders.map((item,i)=>{
+                return <OrderCard item={item} key={i} />
+            })
+        }
+        
     </div>
   )
 }

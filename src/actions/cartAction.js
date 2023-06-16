@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_TO_CART, ADD_TO_CART_REQUEST, CART_ERROR, LOAD_CART, REMOVE_FROM_CART } from "../redusers/cartReducer";
+import { ADD_TO_CART, ADD_TO_CART_REQUEST, CART_ERROR, LOAD_CART, REMOVE_FROM_CART, RESET_CART_ERROR } from "../redusers/cartReducer";
 
 
 export const addItemsToCart = (id, quantity) => async(dispatch, getState) => {
@@ -28,6 +28,10 @@ export const loadCart=()=>async(dispatch)=>{
         const {data}=await axios.get('/api/addToCart')
         dispatch(LOAD_CART(data.cartItems));
     } catch (error) {
+        console.log(error);
         dispatch(CART_ERROR(error.response.data.error))
     }
+}
+export const clearError=()=>(dispatch)=>{
+    dispatch(RESET_CART_ERROR())
 }

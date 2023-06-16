@@ -19,18 +19,49 @@ const orderReducer=createSlice({
         },
         LOAD_ORDERS:(state,action)=>{
             state.orders=action.payload;
-            state.success=true;
             state.loading=false;
             state.error=null
         },
         ORDER_ERROR:(state,action)=>{
             state.error=action.payload
         },
-        ORDER_RESET_ERROR:(state)=>{
+        ORDER_RESET:(state)=>{
             state.error=null;
+            state.success=false;
         }
     }
 })
-
-export const {ORDER_ERROR,ORDER_REQUEST,ORDER_RESET_ERROR,CREATE_NEW_ORDER,LOAD_ORDERS}=orderReducer.actions
+export const orderDetailReducer=createSlice({
+    name:"OrderDetails",
+    initialState:{
+        order:null,
+        loading:false,
+        error:null,
+        isUpdated:false
+    },
+    reducers:{
+        ORDER_DETAIL_REQUEST:(state)=>{
+            state.loading=true;
+        },
+        ORDER_DETAIL_SUCCESS:(state,action)=>{
+            state.loading=false;
+            state.order=action.payload;
+        },
+        ORDER_DETAIL_ERROR:(state,action)=>{
+            state.error=action.payload;
+            state.loading=false;
+        },
+        ORDER_DETAIL_RESET:(state)=>{
+            state.error=null;
+            state.isUpdated=false;
+        },
+        ORDER_DETAIL_UPDATE_SUCCESS:(state,action)=>{
+            state.loading=false;
+            state.isUpdated=true;
+            state.order=action.payload;
+        }
+    }
+})
+export const {ORDER_DETAIL_ERROR,ORDER_DETAIL_SUCCESS,ORDER_DETAIL_RESET,ORDER_DETAIL_REQUEST,ORDER_DETAIL_UPDATE_SUCCESS}=orderDetailReducer.actions
+export const {ORDER_ERROR,ORDER_REQUEST,ORDER_RESET,CREATE_NEW_ORDER,LOAD_ORDERS}=orderReducer.actions
 export default orderReducer.reducer

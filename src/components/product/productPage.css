@@ -109,8 +109,87 @@
     background-color: white;
     border-right: 5px solid #f5f5f5;
     box-sizing: border-box;
+    padding: 2rem .5rem;
 }
-
+.productBottom11{
+        height: auto;
+        padding: 1rem .5rem;
+        width: 100%;
+        border: 2px solid #f5f5f5;
+        border-radius: 5px;
+        display: flex;
+        /* align-items: center; */
+        flex-direction: column;
+        gap: 1rem;
+        padding-left: 1rem;
+}
+.filterHeading,.priceRangeHeading{
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--light);
+}
+.productBottom11>p{
+    color: var(--light);
+    font-weight: 550;
+    font-size: 1.1rm;
+    cursor: pointer;
+}
+.priceRangeDiv>p{
+    color: var(--light);
+    font-weight: 550;
+    font-size: 1.1rm;
+    cursor: pointer;
+    display: inline;
+}
+.priceRangeDiv{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.priceRangeDiv>input{
+    height: 1.5rem;
+    width: 4rem;
+    margin-left: .5rem;
+    outline: none;
+    border: none;
+    background-color: #f5f5f5;
+    caret-color: var(--light);
+    padding: .2rem;
+    color: var(--light);
+    font-weight: 550;
+}
+.filterButtonDiv{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.filterButton{
+    height: auto;
+    width: 100%;
+    padding: 7px 32px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    color: white;
+    font-size: 1.2rem;
+    background-color: var(--light);
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .5s;
+}
+.filterButton:disabled{
+    background-color: #f5bb5e;
+    color: rgba(255, 255, 255, 0.856);
+}
+.filterButton:not(:disabled):hover{
+    background-color: transparent;
+    border: 2px solid var(--light);
+    color: var(--light);
+}
 .productBottom2 {
     background-color: white;
     display: flex;
@@ -242,7 +321,8 @@
         align-items: center;
         justify-content: center;
         height: auto;
-        min-height: 100%;
+        min-width: 100vw;
+        min-height: 100vh;
         width: 100%;
         padding: 1rem calc( (100% - (45rem + 1.8rem)) / 2);
     }
@@ -363,7 +443,7 @@
         height: auto;
         padding: .5rem;
         height: auto;
-        min-height: 100%;
+        min-height: 100vh;
         width: 100%;
     }
     .productBottom2 .card {

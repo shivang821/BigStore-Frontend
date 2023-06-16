@@ -24,12 +24,12 @@ import { loadCart } from './actions/cartAction';
 import Checkout from './components/product/orderRoutes/CheckOut';
 import Success from './components/product/orderRoutes/Success';
 import Myorder from './components/myorder/Myorder';
-
-const Product = React.lazy(() => {
-  return new Promise(resolve => {
-    setTimeout(() => resolve(import('./components/product/Product')), 1000);
-  })
-})
+import Myproducts from './components/dashboard/Myproducts/Myproducts';
+import UpdateProduct from './components/dashboard/updateProduct/UpdateProduct';
+import Orders from './components/dashboard/orders/Orders';
+import UpdateOrder from './components/dashboard/orders/UpdateOrder';
+import Product from './components/product/Product'
+import Profile from './components/Profile/Profile';
 
 function App() {
   const { error } = useSelector(state => state.User)
@@ -40,7 +40,6 @@ function App() {
     if (error) {
       dispatch(USER_RESET())
     }
-    
   }, [])
   return (
     <div className="App">
@@ -57,10 +56,15 @@ function App() {
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/success' element={<Success/>} />
           <Route path='/myorder' element={<Myorder/>} />
+          <Route path='/account/me' element={<Profile/>} />
           <Route path={'/dashboard/'} element={<ErrorPage />} />
           <Route exact path='/dashboard/' element={<DashboardLayout />} >
             <Route path='home' element={<Dashboard />} />
+            <Route path='products' element={<Myproducts />} />
             <Route path='create/new/product' element={<CreateProduct />} />
+            <Route path='update-product/:id' element={<UpdateProduct />} />
+            <Route path='order/:id' element={<UpdateOrder />} />
+            <Route path='orders' element={<Orders/>} />
           </Route>
           <Route path={'/*'} element={<ErrorPage />} />
         </Routes>

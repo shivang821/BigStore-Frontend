@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './dashboard.css'
 import Chart from "react-apexcharts";
 import ReactApexChart from 'react-apexcharts';
@@ -6,9 +6,18 @@ import { useState } from 'react';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import { useSelector } from 'react-redux';
 export const Dashboard = () => {
+  const { orders, products, loading, error } = useSelector(state => state.Seller)
+  const totalOrders = orders ? orders.length : 0;
+  let [pendingOrders, setPendingOrders] = useState(0)
+  let [totalEarning, setTotalEarning] = useState(0)
+  let [ordersInMonth, setOrdersInMonth] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+  let [earningInMonth, setEarningInMonth] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+
   const [pieState, setPieState] = useState({
-    series: [44, 55],
+    series: [],
     options: {
       colors: ['#f4a424', '#14213d'],
       chart: {
@@ -16,9 +25,6 @@ export const Dashboard = () => {
         type: 'pie',
       },
       labels: ['Available Products', 'Out of Stock'],
-      // labels:{
-      //   show: false
-      // },
       dataLabels: {
         offset: 0,
         minAngleToShowLabel: 10
@@ -75,40 +81,83 @@ export const Dashboard = () => {
           width: 2
         },
       },
-      series: [
-        {
-          name: "orders",
-          data: [30, 40, 45, 50, 49, 60, 70, 91, 22, 33, 11, 22]
-        },
-        {
-          name: "earning",
-          data: [300, 403, 451, 502, 429, 620, 730, 931, 444, 333, 444, 333]
-        }
-      ],
+      series:[]
     }
 
   )
+  useEffect(() => {
+    const orderData=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    const earningData=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    let outOfStockProduct = 0;
+    let availableProducts = 0;
+    if (orders) {
+      orders.forEach((item) => {
+        setTotalEarning(totalEarning += item.totalPrice)
+        if (item.status === 'pending') {
+          setPendingOrders(pendingOrders + 1);
+        }
+        const month = Number(item.createdAt.substring(5, 7)) - 1;
+        const createdYear = Number(item.createdAt.substring(0, 4));
+        const currentYear = new Date().getFullYear()
+        if (currentYear === createdYear) {
+          orderData[month]+=1;
+          earningData[month]+=item.totalPrice;
+          setOrdersInMonth((old) => {
+            old[month] += 1;
+            return [...old]
+          })
+          setEarningInMonth((old) => {
+            old[month] += item.totalPrice;
+            return [...old]
+          })
+        }
+      })
+    }
+    setState((st)=>{
+      st.series=[{
+          name: "orders",
+          data: orderData
+        },
+        {
+          name: "earning",
+          data: earningData
+        }]
+        return st;
+    })
+    if (products) {
+      products.forEach((item) => {
+        if (item.stock === 0) {
+          outOfStockProduct += 1;
+        }
+      })
+      availableProducts = products.length - outOfStockProduct;
+    }
+    setPieState((st)=>{
+      st.series=[availableProducts, outOfStockProduct]
+      return st;
+    })
+  }, [orders, products])
   return (
     <div className='dashboard'>
       <section className="dashboardTop">
         <div className="dashboardCards">
           <div>
             <h2>Total Earning</h2>
-            <h2>₹44220</h2>
+            <h2>₹{totalEarning}</h2>
           </div>
           <CurrencyRupeeIcon />
         </div>
         <div className="dashboardCards">
           <div>
             <h2>Total Orders</h2>
-            <h2>553</h2>
+            <h2>{totalOrders}</h2>
           </div>
           <ListAltIcon />
         </div>
         <div className="dashboardCards">
           <div>
             <h2>Pending Orders</h2>
-            <h2>43</h2>
+            <h2>{pendingOrders}</h2>
           </div>
           <PendingActionsIcon />
         </div>

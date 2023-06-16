@@ -1,0 +1,113 @@
+.profile{
+    min-height: 100vh;
+    height: auto;
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-top: 8.5rem;
+    gap: 2rem;
+    padding-bottom: 2rem;
+}
+.profile1,.profile2{
+    height: auto;
+    width: 30rem;
+    padding: .5rem 0;
+    background-color: white;
+    /* border: 2px solid #f5f5f5; */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 2rem;
+    box-shadow: 0 0 40px 10px #f5f5f5fa;
+}
+.profile11,.profile21{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--light);
+}
+.personalDetailDiv,.shippingDetailDiv{
+    width: 80%;
+    height: auto;
+    display: grid;
+    color: var(--light);
+    font-weight: normal;
+    font-size: 1.1rem;
+    grid-template-columns: 1fr .2fr 1fr;
+}
+.personalDetailDiv>div:nth-child(1),.shippingDetailDiv>div:nth-child(1){
+    display: flex;
+    justify-content: flex-start;  
+}
+.personalDetailDiv>div:nth-child(3),.shippingDetailDiv>div:nth-child(3){
+    display: flex;
+    justify-content: flex-start;  
+    padding-left: 2rem;
+}
+@media screen and (max-width:767px) {
+    /* .profile{
+        min-height: 100vh;
+        height: auto;
+        width: 100vw;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding-top: 8.5rem;
+        gap: 2rem;
+    } */
+    .profile1,.profile2{
+        height: auto;
+        width: 100%;
+        max-width: 30rem;
+        padding: .5rem 0;
+        background-color: white;
+        border: 2px solid #f5f5f5;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+        padding-bottom: 2rem;
+    }
+    .profile11,.profile21{
+        height: 3rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--light);
+    }
+    .personalDetailDiv,.shippingDetailDiv{
+        width: 85%;
+        height: auto;
+        display: grid;
+        color: var(--light);
+        font-weight: normal;
+        font-size: 1.1rem;
+        grid-template-columns: 1.5fr .2fr 1.5fr;
+    }
+    .personalDetailDiv>div:nth-child(1),.shippingDetailDiv>div:nth-child(1){
+        display: flex;
+        justify-content: flex-start;  
+    }
+    .personalDetailDiv>div:nth-child(3),.shippingDetailDiv>div:nth-child(3){
+        display: flex;
+        justify-content: flex-start;  
+        padding-left: 1rem;
+    }
+}

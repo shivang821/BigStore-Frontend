@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import './createProduct.css'
 import SpellcheckIcon from '@mui/icons-material/Spellcheck';
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
+import StorageIcon from '@mui/icons-material/Storage';
 import DescriptionIcon from '@mui/icons-material/Description';
 import CategoryIcon from '@mui/icons-material/Category';
-import StorageIcon from '@mui/icons-material/Storage';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { useDispatch, useSelector } from 'react-redux';
@@ -103,13 +103,13 @@ const CreateProduct = () => {
                         </div>
                         <div>
                             < CategoryIcon />
-                            <input type="text" placeholder='Category' required value={category} onChange={(e) => { setCategory(e.target.value) }} />
+                            <input type="text" placeholder='Category' value={category} onChange={(e) => {let text=e.target.value;setCategory(text.toUpperCase())}} />
                             <button type='button' disabled={category ? false : true} className="addCategory" onClick={addCategory} >Add</button>
                         </div>
                         <div id='createProductFormFile'>
                             <CloudUploadIcon />
                             <label htmlFor="productImage">Upload Product Images</label>
-                            <input type="file" style={{ visibility: "hidden" }} id='productImage' placeholder='Select Images' required accept='images/*' multiple
+                            <input type="file" style={{ visibility: "hidden" }} id='productImage' placeholder='Select Images' required accept='images/*' 
                                 onChange={(e) => { createProductImagesChange(e); }} />
                         </div>
 

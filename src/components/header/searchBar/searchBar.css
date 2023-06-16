@@ -37,6 +37,12 @@
     }
     
     .searchBarRight {
+        height: 100%;
+        width: 100%;
+    }
+    .searchBarRight>a{
+        height: 100%;
+        background-color: 100%;
         background-color: var(--org);
         background-color: var(--light);
         color: #f5f5f5;
@@ -47,11 +53,10 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        color: white;
     }
-    
-    .searchBarRight>svg {
-        color: #ffffff;
-        font-size: 2rem;
+    .searchBarRight>a>svg {
+        font-size: 1.8rem;
         font-weight: bolder !important;
     }
     

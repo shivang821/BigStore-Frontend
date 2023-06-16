@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productReducer, { productDetails } from "./redusers/productReducer";
+import productReducer, { productDetails, updateProductReducer } from "./redusers/productReducer";
 import userReducer from "./redusers/userReducer";
 import { newProduct } from "./redusers/productReducer";
 import cartReducer from "./redusers/cartReducer";
 import itemsArrayReducer from "./redusers/itemsArrayReducer";
-import orderReducer from "./redusers/orderReducer";
+import orderReducer, { orderDetailReducer } from "./redusers/orderReducer";
+import sellerReducer, { deleteProductreducer } from "./redusers/sellerReducer";
 
 const Store = configureStore({
     reducer: {
@@ -14,7 +15,11 @@ const Store = configureStore({
         ProductDetails:productDetails.reducer,
         Cart:cartReducer,
         ItemsArray:itemsArrayReducer,
-        Order:orderReducer
+        Order:orderReducer,
+        Seller:sellerReducer,
+        DeleteProduct:deleteProductreducer.reducer,
+        UpdateProduct:updateProductReducer.reducer,
+        OrderDetail:orderDetailReducer.reducer
     }
 })
 export default Store

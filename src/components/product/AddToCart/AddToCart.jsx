@@ -3,7 +3,6 @@ import './addToCart.css'
 import ProductCard from './ProductCard/ProductCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
-import { useEffect } from 'react'
 import {  useNavigate } from 'react-router-dom'
 import { ADD_ITEMS } from '../../../redusers/itemsArrayReducer'
 const AddToCart = () => {
@@ -38,26 +37,13 @@ const AddToCart = () => {
   return (
     <div className='addTocart'>
       <div className="cartLeft">
-        {cartItems && cartItems.map((item) => {
-          return <ProductCard item={item} addItem={addItem} removeItem={removeItem} />
+        {cartItems && cartItems.map((item,i) => {
+          return <ProductCard item={item} key={i} addItem={addItem} removeItem={removeItem} />
         })}
       </div>
       <div className="cartRight">
         <div className='cartRight1' >
           <div className="cartRight11">
-            <div className="cartRight111">
-              {
-                itemsArray.map((item) => {
-                  return <>
-                    <div className="itemsArrayDiv">
-                      <div>{item.name}</div>
-                      <div>:</div>
-                      <div>{item.price}</div>
-                    </div>
-                  </>
-                })
-              }
-            </div>
             <div className="cartRight112 itemsArrayDiv">
               <div>Total Price</div>
               <div>:</div>

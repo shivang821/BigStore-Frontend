@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Slider from '../slider/Slider'
 import tshirt from '../../images/tshirt 1.svg'
+import footwear from '../../images/footwear1.jpg'
+import bottomwear from '../../images/bottomwear.jpg'
 import './home.css'
 import { NavLink, useSearchParams } from 'react-router-dom'
 import ProductCard from '../product/ProductCard'
@@ -8,35 +10,40 @@ import { useDispatch, useSelector } from 'react-redux'
 import { PRODUCT_RESET } from '../../redusers/productReducer'
 import { getProducts } from '../../actions/productAction'
 import { loadCart } from '../../actions/cartAction'
+import Loader from '../loading/Loader'
 const Home = () => {
     const { product, loading, error, success } = useSelector(state => state.Product)
-    const {isAuthenticate}=useSelector(state=>state.User)
-    const dispatch=useDispatch()
+    const { isAuthenticate } = useSelector(state => state.User)
+    const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(getProducts({ category: undefined }))
+        if (!success) {
+            dispatch(getProducts({ category: "undefined", lt: 200000, gt: 0, sort: 0 }))
+        }
         if (error) {
             dispatch(PRODUCT_RESET())
         }
-        dispatch(loadCart())
-    },[isAuthenticate])
+        if (success || error) {
+            dispatch(PRODUCT_RESET())
+        }
+    }, [isAuthenticate, product])
     const deals = [
         {
-            url: '/product/?caterogy=[shirt,t-shirt]&price=lt:1299',
+            url: '/product?category=topwear&gt=0&lt=1299&sort=0',
             image: tshirt,
             category: <p>Shirt <span>&</span> <br /> T-shirt</p>,
-            desc: <p><NavLink to='/product/?caterogy=[shirt,t-shirt]&price=lt:1299'>Under ₹1299</NavLink></p>
+            desc: <p><NavLink to='/product?category=topwear&gt=0&lt=1299&sort=0'>Under ₹1299</NavLink></p>
         },
         {
-            url: '/product/?caterogy=[jeans,trouser]&price=lt:1899',
-            image: tshirt,
+            url: '/product?category=bottomwear&gt=0&lt=1899&sort=0',
+            image: bottomwear ,
             category: <p>Jeans <span>&</span> <br /> Trouser</p>,
-            desc: <p><NavLink to='/product/?caterogy=[jeans,trouser]&price=lt:1899'>Under ₹1899</NavLink></p>
+            desc: <p><NavLink to='/product?category=bottomwear&gt=0&lt=1899&sort=0'>Under ₹1899</NavLink></p>
         },
         {
-            url: '/product/?caterogy=[shoes,sandals]&price=lt:2599',
-            image: tshirt,
+            url: '/product?category=footwear&gt=0&lt=2599&sort=0',
+            image: footwear,
             category: <p>Shoes <span>&</span> <br /> Sandals</p>,
-            desc: <p><NavLink to='/product/?caterogy=[shoes,sandals]&price=lt:2599'>Under ₹2599</NavLink></p>
+            desc: <p><NavLink to='/product?category=footwear&gt=0&lt=2599&sort=0'>Under ₹2599</NavLink></p>
         },
     ]
     return (
@@ -47,9 +54,9 @@ const Home = () => {
                     <h2>Top Deals</h2>
                 </div>
                 <div>
-                    {deals.map((item) => {
+                    {deals.map((item, i) => {
                         return (
-                            <div className="deals">
+                            <div className="deals" key={i}>
                                 <NavLink to={item.url}>
                                     <img src={item.image} alt="" />
                                     <div className="overlay">
@@ -64,22 +71,22 @@ const Home = () => {
                 </div>
             </div>
             <section className='products' id='#product'>
-                <div> <h2>Best Selling Products</h2></div>
-                <div>
-                    {/* <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard /> */}
-                    {
-                        product&&product.map((item,ind)=>{
-                            return <ProductCard key={ind} details={item} />
-                        })
-                    }
-                </div>
+                {loading ? <Loader /> :
+                    <>
+                        <div> <h2>Best Selling Products</h2></div>
+                        <div>
+                            {
+                                product && product.map((item, ind) => {
+                                    return <ProductCard key={ind} details={item} />
+                                })
+                            }
+                            {
+                                product && product.map((item, ind) => {
+                                    return <ProductCard key={ind} details={item} />
+                                })
+                            }
+                        </div>
+                    </>}
             </section>
         </div>
     )
