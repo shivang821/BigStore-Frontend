@@ -10,54 +10,58 @@ import ProductReview from './ProductReview/ProductReview'
 import SubmitReviewBox from './ProductReview/SubmitReviewBox'
 import { PRODUCT_DETAIL_RESET } from '../../../redusers/productReducer'
 import { ORDER_RESET } from '../../../redusers/orderReducer'
+import Loader from '../../loading/Loader'
 const ProductDetails = () => {
   const { id } = useParams()
-  const {success:ordersuccess}=useSelector(state=>state.Order)
+  const { success: ordersuccess } = useSelector(state => state.Order)
   const dispatch = useDispatch()
-  const { pDetails,success } = useSelector(state => state.ProductDetails)
+  const { pDetails, success, loading } = useSelector(state => state.ProductDetails)
   const [openReviewBox, setOpenReviewBox] = useState(false)
   let reviews;
   if (pDetails) {
     reviews = pDetails.reviews
   }
-  const closeBox=()=>{
+  const closeBox = () => {
     setOpenReviewBox(!openReviewBox)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo(0, 0);
-    if(!pDetails||pDetails._id!==id||ordersuccess){
+    if (!pDetails || pDetails._id !== id || ordersuccess) {
       dispatch(productDetail(id))
     }
-    if(success){
+    if (success) {
       dispatch(PRODUCT_DETAIL_RESET())
     }
-    if(ordersuccess){
+    if (ordersuccess) {
       dispatch(ORDER_RESET())
     }
-  },[])
-  // id,success,ordersuccess
+  }, [loading])
   return (
     <>
       <div className="productDetails">
-        <div className="productDetails1">
-          <div className="productDetails1-1">
-            <ProductSlider />
-          </div>
-          <div className="productDetails1-2">
-            <ProductInformation detail={pDetails} />
-          </div>
-        </div>
-        <div className="productDetails2">
-          <div className='reviewHeading'><h2>Reviews</h2></div>
-          {reviews && reviews.map((item, i) => {
-            return <ProductReview review={item} key={i} />
-          })}
-          <div className="submitReview">
-            <button onClick={() => setOpenReviewBox(!openReviewBox)}>Submit Review</button>
-          </div>
-        </div>
-        {openReviewBox && <SubmitReviewBox id={id} closeBox={closeBox}/>}
+        {loading ? <Loader /> :
+          <>
+            <div className="productDetails1">
+              <div className="productDetails1-1">
+                <ProductSlider />
+              </div>
+              <div className="productDetails1-2">
+                <ProductInformation detail={pDetails} />
+              </div>
+            </div>
+            <div className="productDetails2">
+              <div className='reviewHeading'><h2>Reviews</h2></div>
+              {reviews && reviews.map((item, i) => {
+                return <ProductReview review={item} key={i} />
+              })}
+              <div className="submitReview">
+                <button onClick={() => setOpenReviewBox(!openReviewBox)}>Submit Review</button>
+              </div>
+            </div>
+            {openReviewBox && <SubmitReviewBox id={id} closeBox={closeBox} />}
+          </>
+        }
       </div>
     </>
   )

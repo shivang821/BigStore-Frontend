@@ -90,11 +90,13 @@ export const Dashboard = () => {
     const earningData=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     let outOfStockProduct = 0;
     let availableProducts = 0;
+    let pending=0;
+    let earning=0;
     if (orders) {
       orders.forEach((item) => {
-        setTotalEarning(totalEarning += item.totalPrice)
+        earning+=item.totalPrice;
         if (item.status === 'pending') {
-          setPendingOrders(pendingOrders + 1);
+          pending+=1;
         }
         const month = Number(item.createdAt.substring(5, 7)) - 1;
         const createdYear = Number(item.createdAt.substring(0, 4));
@@ -113,6 +115,8 @@ export const Dashboard = () => {
         }
       })
     }
+    setPendingOrders(pending);
+    setTotalEarning(earning)
     setState((st)=>{
       st.series=[{
           name: "orders",

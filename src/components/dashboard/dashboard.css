@@ -102,35 +102,36 @@
         justify-content: center;
     }
     .dashboardTop {
-        overflow-x: scroll !important;
         display: flex;
         width: auto;
         align-items: center;
         justify-content: space-evenly;
-        /* height: ; */
     }
     .dashboardCards {
         height: 7rem;
         width: 30%;
+        max-width: 10rem;
         border-radius: 10px;
         border: 1px solid #f5f5f5;
         position: relative;
         justify-content: space-around;
-        gap: .5rem;
-        display: flex;
+        gap: 2rem;
+        display: block;
         align-items: center;
         padding: 0;
-        justify-content: center;
     }
     .dashboardCards>div{
         width: 100%;
-        font-size: .8rem;
+        font-size: .5rem !important;
+        font-weight: bold;
+        display: flex;
         height: 100%;
         top: 0;
         left: 0;
-        padding: .5rem .2rem;
-        gap: 0rem;
-        justify-content: space-evenly;
+        padding: .5rem .5rem;
+        padding-bottom: .4rem;
+        gap: .5rem;
+        justify-content: space-around;
     }
     .dashboardCards:nth-child(2) {
         background: var(--light);
@@ -140,14 +141,17 @@
     }
     .dashboardCards:nth-child(2)>svg {
         color: white;
-        top: 1rem;
+        top: auto;
+        bottom: 1rem;
+        right: 1rem;
     }
     .dashboardCards>svg {
         position: absolute;
         color: var(--light);
         font-size: 2rem;
-        right: 0rem;
-        top: 1rem;
+        top: auto;
+        bottom: 1rem;
+        right: 1rem;
     }
 }
 
@@ -159,5 +163,57 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .dashboardTop {
+        display: flex;
+        width: auto;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .dashboardCards {
+        height: 8rem;
+        width: 30%;
+        max-width: 13rem;
+        border-radius: 10px;
+        border: 1px solid #f5f5f5;
+        position: relative;
+        justify-content: space-around;
+        gap: 0rem;
+        display: flex;
+        align-items: center;
+    }
+    .dashboardCards>div{
+        width: 100%;
+        font-size: .8rem;
+        font-weight: bold;
+        height: 100%;
+        top: 0;
+        left: 0;
+        padding: .5rem .7rem;
+        padding-top: 0;
+        gap: 1.4rem;
+        padding-bottom: 1.3rem;
+        justify-content: flex-end;
+    }
+    .dashboardCards:nth-child(2) {
+        background: var(--light);
+        box-shadow: 0 8px 32px 0 rgba(166, 168, 221, 0.37);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .dashboardCards:nth-child(2)>svg {
+        color: white;
+        bottom: 1rem;
+        top: auto;
+        right: 1rem;
+    }
+    .dashboardCards>svg {
+        position: absolute;
+        top: auto;
+        color: var(--light);
+        font-size: 2.3rem;
+        bottom: 1rem;
+        top: auto;
+        right: 1rem;
     }
 }
