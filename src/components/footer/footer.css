@@ -1,6 +1,257 @@
 .footer {
-    height: 10rem;
+    min-height: 15rem;
+    height: auto;
     width: 100%;
     background-color: var(--dark);
     z-index: 18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    box-sizing: content-box;
+}
+
+.footer>div {
+    height: auto;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.map {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map>* {
+    height: 13rem;
+    aspect-ratio: 16/9;
+    border: none;
+    border-radius: 5px;
+}
+
+.middleFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.middleFooter>div {
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    font-family: roboto;
+    padding: 0 2rem;
+}
+
+.middleFooter>div>a {
+    color: var(--light);
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: roboto;
+    transition: all .5s;
+}
+
+.middleFooter>div>h4 {
+    font-size: 1.2rem;
+    color: var(--light);
+    color: var(--light);
+    letter-spacing: 3px;
+}
+
+.middleFooter>div>a:hover {
+    color: white;
+}
+
+.contactMeDiv {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.contactMeDiv>div {
+    height: 100%;
+    width: auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contactMeDiv>div>h4 {
+    color: var(--light);
+    font-size: 1.2rem;
+}
+
+.contactMeLinkedinLinks, .contactMeGmailLinks {
+    height: 2rem;
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.contactMeLinkedinLinks>h4, .contactMeGmailLinks>h4 {
+    color: white;
+    transition: all .5s;
+}
+
+.contactMeLinkedinLinks>h4:hover {
+    color: #0a66c2;
+}
+
+.contactMeGmailLinks>h4:hover {
+    color: #EA4335;
+}
+
+.contactMeLinkedinLinks>img {
+    width: 30px;
+    height: 30px;
+}
+.contactMeGmailLinks>img {
+    width: 23px;
+    height: 23px;
+    margin-left:7px;
+    transform: translateX(-.15rem);
+}
+
+@media screen and (max-width:767px) {
+    .footer {
+        min-height: 15rem;
+        height: auto;
+        width: 100%;
+        background-color: var(--dark);
+        z-index: 18;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 0;
+        box-sizing: content-box;
+    }
+
+    .footer>div {
+        height: auto;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer>div>div {
+        width: 45%;
+    }
+
+    .map {
+        height: auto;
+        width: 100% !important;
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0 !important;
+    }
+
+    .map>* {
+        width: 90%;
+    }
+
+    .middleFooter {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: .5rem;
+    }
+
+    .middleFooter>div {
+        height: 100%;
+        width: auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-direction: column;
+        font-family: roboto;
+        padding: 0 0;
+    }
+
+    .contactMeDiv {
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+    }
+    
+    .contactMeDiv>div {
+        height: 100%;
+        width: auto;
+        padding: 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .contactMeDiv>div>h4 {
+        color: var(--light);
+        font-size: 1.2rem;
+    }
+    
+    .contactMeLinkedinLinks, .contactMeGmailLinks {
+        height: 2rem;
+        width: auto;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+    
+}
+
+@media screen and (min-width:768px) and (max-width:1439px) {
+    .footer {
+        min-height: 10rem;
+        height: auto;
+        width: 100%;
+        background-color: var(--dark);
+        z-index: 18;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 0;
+        box-sizing: content-box;
+    }
+
+    .footer>div {
+        height: auto;
+        width: 90%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .map {
+        height: auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .map>* {
+        height: 8rem;
+        aspect-ratio: 16/9;
+    }
+
+    .middleFooter>div>a {
+        letter-spacing: 2px;
+    }
+
+    .middleFooter>div>h4 {
+        letter-spacing: 2px;
+    }
 }

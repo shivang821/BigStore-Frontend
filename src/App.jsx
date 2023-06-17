@@ -30,6 +30,7 @@ import Orders from './components/dashboard/orders/Orders';
 import UpdateOrder from './components/dashboard/orders/UpdateOrder';
 import Product from './components/product/Product'
 import Profile from './components/Profile/Profile';
+import UpdateUser from './components/Profile/UpdateUser';
 
 function App() {
   const { error } = useSelector(state => state.User)
@@ -57,6 +58,7 @@ function App() {
           <Route path='/success' element={<Success/>} />
           <Route path='/myorder' element={<Myorder/>} />
           <Route path='/account/me' element={<Profile/>} />
+          <Route path='/update/me' element={<UpdateUser/>} />
           <Route path={'/dashboard/'} element={<ErrorPage />} />
           <Route exact path='/dashboard/' element={<DashboardLayout />} >
             <Route path='home' element={<Dashboard />} />

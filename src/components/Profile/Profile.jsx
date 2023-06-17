@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import './profile.css'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 const Profile = () => {
+    const navigate=useNavigate()
     const {user}=useSelector(state=>state.User)
   return (
     <div className='profile'>
@@ -54,6 +56,9 @@ const Profile = () => {
                 <div>Contact No.</div>
                 <div>:</div>
                 <div>{user&&user.shippingDetails.contact}</div>
+            </div>
+            <div className="changeDetails">
+                <button onClick={()=>{navigate('/update/me')}}>Change</button>
             </div>
         </div>
     </div>
